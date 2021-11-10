@@ -48,7 +48,7 @@ class CoinCard extends StatelessWidget {
           ),
           subtitle: Text('${price}  ${symbol.toUpperCase()}'),
           trailing: Text(
-            price_change.toString(),
+            double.parse(price_change.toString()).toStringAsFixed(3),
             style: TextStyle(
                 color: price_change.toString().contains('-')
                     ? Colors.red

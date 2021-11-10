@@ -4,7 +4,7 @@ import 'package:crypto_mobile_application/src/constants/colors.dart';
 import 'package:crypto_mobile_application/src/constants/strings.dart';
 import 'package:crypto_mobile_application/src/constants/text_style.dart';
 import 'package:crypto_mobile_application/src/screens/detail_screen/detail_screen.dart';
-import 'package:crypto_mobile_application/src/widgets/coin_cart.dart';
+import 'package:crypto_mobile_application/src/widgets/coin_card.dart';
 import 'package:crypto_mobile_application/src/widgets/search_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';

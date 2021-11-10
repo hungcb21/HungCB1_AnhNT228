@@ -1,8 +1,8 @@
-import 'package:crypto_mobile_application/src/blocs/coins_bloc/coins_state.dart';
-import 'package:crypto_mobile_application/src/services/coin_service.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
+import '../../services/coin_service.dart';
 import 'coins_event.dart';
+import 'coins_state.dart';
 
 class CoinsBloc extends Bloc<CoinsEvent, CoinsState> {
   CoinsBloc({this.service}) : super(CoinsInitial());

@@ -1,4 +1,3 @@
-
 import 'package:crypto_mobile_application/src/models/coins.dart';
 import 'package:equatable/equatable.dart';
 
@@ -15,7 +14,6 @@ class CoinsLoadInProgress extends CoinsState {}
 class CoinsLoadSuccess extends CoinsState {
   final List<Coins>? listCoins;
   CoinsLoadSuccess({this.listCoins});
-
 }
 
 class CoinsLoadFailure extends CoinsState {

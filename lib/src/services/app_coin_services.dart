@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'package:crypto_mobile_application/src/constants/strings.dart';
 import 'package:crypto_mobile_application/src/models/coins.dart';
 
 import 'coin_service.dart';
@@ -25,7 +26,7 @@ class AppCoinService extends CoinService {
       }).toList();
       return listCoins;
     } else {
-      throw Exception('Failed to load coins list');
+      throw Exception(StringData.errorMessage);
     }
   }
 }

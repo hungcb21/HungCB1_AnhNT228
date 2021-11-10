@@ -73,6 +73,7 @@ class _SearchBarState extends State<SearchBar> {
                 return Align(
                   alignment: Alignment.topLeft,
                   child: Container(
+                    color: Colors.white,
                     width: 300,
                     child: ListView.builder(
                       itemCount: options.length,

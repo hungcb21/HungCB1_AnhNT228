@@ -26,7 +26,12 @@ class _HomeScreenState extends State<HomeScreen> {
               height: 200,
               child: Column(
                 children: [
-                  SearchBar([]),
+                  BlocBuilder<CoinsBloc, CoinsState>(builder: (context, state) {
+                    if (state is ListCoinsLoaded) {
+                      return SearchBar(state.listCoins!);
+                    }
+                    return SearchBar([]);
+                  }),
                 ],
               ),
             ),

@@ -1,6 +1,7 @@
 import 'package:crypto_mobile_application/src/constants/colors.dart';
 import 'package:crypto_mobile_application/src/constants/strings.dart';
 import 'package:crypto_mobile_application/src/constants/text_style.dart';
+import 'package:crypto_mobile_application/src/widgets/search_bar.dart';
 import 'package:flutter/material.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -19,7 +20,9 @@ class _HomeScreenState extends State<HomeScreen> {
             Container(
               height: 200,
               child: Column(
-                children: [],
+                children: [
+                  SearchBar([]),
+                ],
               ),
             ),
             Expanded(

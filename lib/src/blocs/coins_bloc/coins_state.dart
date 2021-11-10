@@ -7,12 +7,13 @@ abstract class CoinsState extends Equatable {
   List<Object?> get props => [];
 }
 
-class CoinsInitial  extends CoinsState {}
+class CoinsInitial extends CoinsState {}
 
 class CoinsLoadInProgress extends CoinsState {}
 
 class CoinsLoadSuccess extends CoinsState {
   final List<Coins>? listCoins;
+
   CoinsLoadSuccess({this.listCoins});
 }
 

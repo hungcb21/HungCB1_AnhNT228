@@ -1,4 +1,4 @@
-import 'package:crypto_mobile_application/src/models/coins.dart';
+import '../models/coins.dart';
 import 'package:http/http.dart' as http;
 
 abstract class CoinService {

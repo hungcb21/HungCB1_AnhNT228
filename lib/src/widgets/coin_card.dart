@@ -1,5 +1,5 @@
-import 'package:crypto_mobile_application/src/constants/strings.dart';
-import 'package:crypto_mobile_application/src/constants/text_style.dart';
+import '../constants/strings.dart';
+import '../constants/text_style.dart';
 import 'package:flutter/material.dart';
 
 class CoinCard extends StatelessWidget {

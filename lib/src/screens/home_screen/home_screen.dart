@@ -1,11 +1,11 @@
-import 'package:crypto_mobile_application/src/blocs/coins_bloc/coins_bloc.dart';
-import 'package:crypto_mobile_application/src/blocs/coins_bloc/coins_state.dart';
-import 'package:crypto_mobile_application/src/constants/colors.dart';
-import 'package:crypto_mobile_application/src/constants/strings.dart';
-import 'package:crypto_mobile_application/src/constants/text_style.dart';
-import 'package:crypto_mobile_application/src/screens/detail_screen/detail_screen.dart';
-import 'package:crypto_mobile_application/src/widgets/coin_card.dart';
-import 'package:crypto_mobile_application/src/widgets/search_bar.dart';
+import '../../blocs/coins_bloc/coins_bloc.dart';
+import '../../blocs/coins_bloc/coins_state.dart';
+import '../../constants/colors.dart';
+import '../../constants/strings.dart';
+import '../../constants/text_style.dart';
+import '../detail_screen/detail_screen.dart';
+import '../../widgets/coin_card.dart';
+import '../../widgets/search_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 

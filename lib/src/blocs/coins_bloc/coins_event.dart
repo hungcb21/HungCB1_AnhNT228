@@ -2,16 +2,15 @@ import 'package:equatable/equatable.dart';
 
 abstract class CoinsEvent extends Equatable {
   @override
-  // TODO: implement props
   List<Object?> get props => [];
 }
 
-class CoinsGetListCoin extends CoinsEvent {
+class GetListCoins extends CoinsEvent {
   String? currency;
   bool? sparkline;
 
 
-  CoinsGetListCoin({ this.currency, this.sparkline});
+  GetListCoins({ this.currency, this.sparkline});
 }
 
 

@@ -1,3 +1,4 @@
+import 'package:crypto_mobile_application/src/constants/strings.dart';
 import 'package:crypto_mobile_application/src/constants/text_style.dart';
 import 'package:flutter/material.dart';
 
@@ -39,7 +40,7 @@ class CoinCard extends StatelessWidget {
         ),
         child: ListTile(
           leading: Image.network(
-            image!,
+            image??StringData.constImage,
             errorBuilder: (context, error, strackTrace) => Icon(Icons.error),
           ),
           title: Text(

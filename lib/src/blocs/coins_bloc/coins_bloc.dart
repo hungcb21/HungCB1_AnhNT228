@@ -6,7 +6,7 @@ import 'coins_event.dart';
 
 class CoinsBloc extends Bloc<CoinsEvent, CoinsState> {
   CoinsBloc({this.service}) : super(ListCoinsEmpty());
-  final NUMBER_OF_COINS_PER_STATE = 100;
+  final NUMBER_OF_COINS_PER_STATE = 250;
   CoinService? service;
 
   @override

@@ -1,7 +1,8 @@
-import 'package:crypto_mobile_application/src/constants/colors.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:syncfusion_flutter_charts/sparkcharts.dart';
+
+import '../../constants/colors.dart';
 
 class DetailScreen extends StatefulWidget {
   @override

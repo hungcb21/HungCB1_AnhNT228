@@ -3,17 +3,17 @@ class Coins {
   String? name;
   String? symbol;
   String? image;
-  var current_price;
-  var high_24h;
-  var low_24h;
-  var price_change_24h;
-  var ath;
-  var ath_change_percentage;
-  var ath_date;
-  var atl;
-  var atl_change_percentage;
-  var atl_date;
-  var last_updated;
+  num? current_price;
+  num? high_24h;
+  num? low_24h;
+  num? price_change_24h;
+  double? ath;
+  double? ath_change_percentage;
+  String? ath_date;
+  double? atl;
+  double? atl_change_percentage;
+  String? atl_date;
+  String? last_updated;
   List<dynamic> sparkline_in_7d;
 
   Coins({

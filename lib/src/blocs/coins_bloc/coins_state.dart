@@ -1,4 +1,4 @@
-import 'package:crypto_mobile_application/src/models/coins.dart';
+import '../../models/coins.dart';
 import 'package:equatable/equatable.dart';
 
 abstract class CoinsState extends Equatable {

@@ -1,14 +1,15 @@
+import 'package:flutter/material.dart';
+
 import '../constants/strings.dart';
 import '../constants/text_style.dart';
-import 'package:flutter/material.dart';
 
 class CoinCard extends StatelessWidget {
   VoidCallback onTap;
   String? image;
-  String name;
-  String symbol;
-  var price;
-  var price_change;
+  String? name;
+  String? symbol;
+  num price;
+  num price_change;
 
   CoinCard(
       {required this.image,
@@ -44,11 +45,11 @@ class CoinCard extends StatelessWidget {
             errorBuilder: (context, error, strackTrace) => Icon(Icons.error),
           ),
           title: Text(
-            name,
+            name!,
             style: TextStylesApp.nameCoin,
           ),
           subtitle: Text(
-              '${double.parse(price.toString()).toStringAsFixed(3)}  ${symbol.toUpperCase()}'),
+              '${double.parse(price.toString()).toStringAsFixed(3)}  ${symbol!.toUpperCase()}'),
           trailing: Text(
             double.parse(price_change.toString()).toStringAsFixed(3),
             style: TextStyle(

@@ -1,4 +1,4 @@
-import 'package:crypto_mobile_application/src/constants/strings.dart';
+import '../../constants/strings.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../services/coin_service.dart';

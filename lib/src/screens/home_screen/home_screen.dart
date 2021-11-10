@@ -72,9 +72,9 @@ class _HomeScreenState extends State<HomeScreen> {
                                     name: state.listCoins![index].name!,
                                     symbol: state.listCoins![index].symbol!,
                                     price:
-                                        state.listCoins![index].current_price,
+                                        state.listCoins![index].current_price!,
                                     price_change: state
-                                        .listCoins![index].price_change_24h,
+                                        .listCoins![index].price_change_24h!,
                                     onTap: () {
                                       Navigator.push(
                                           context,

@@ -1,8 +1,9 @@
-import 'package:crypto_mobile_application/src/constants/strings.dart';
-import 'package:crypto_mobile_application/src/constants/text_style.dart';
-import 'package:crypto_mobile_application/src/models/coins.dart';
-import '../screens/detail_screen/detail_screen.dart';
 import 'package:flutter/material.dart';
+
+import '../constants/strings.dart';
+import '../constants/text_style.dart';
+import '../models/coins.dart';
+import '../screens/detail_screen/detail_screen.dart';
 
 class SearchBar extends StatefulWidget {
   List<Coins> datalist;
@@ -60,9 +61,9 @@ class _SearchBarState extends State<SearchBar> {
                 }
                 return widget.datalist.where((Coins option) {
                   return option.name
-                      .toString()
-                      .toLowerCase()
-                      .contains(textEditingValue.text.toLowerCase()) ||
+                          .toString()
+                          .toLowerCase()
+                          .contains(textEditingValue.text.toLowerCase()) ||
                       option.symbol
                           .toString()
                           .toLowerCase()
@@ -103,10 +104,8 @@ class _SearchBarState extends State<SearchBar> {
                 );
               },
               onSelected: (Coins selection) {
-                Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                        builder: (context) => DetailScreen()));
+                Navigator.push(context,
+                    MaterialPageRoute(builder: (context) => DetailScreen()));
               },
             ),
           ),

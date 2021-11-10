@@ -40,14 +40,15 @@ class CoinCard extends StatelessWidget {
         ),
         child: ListTile(
           leading: Image.network(
-            image??StringData.constImage,
+            image ?? StringData.constImage,
             errorBuilder: (context, error, strackTrace) => Icon(Icons.error),
           ),
           title: Text(
             name,
             style: TextStylesApp.nameCoin,
           ),
-          subtitle: Text('${price}  ${symbol.toUpperCase()}'),
+          subtitle: Text(
+              '${double.parse(price.toString()).toStringAsFixed(3)}  ${symbol.toUpperCase()}'),
           trailing: Text(
             double.parse(price_change.toString()).toStringAsFixed(3),
             style: TextStyle(

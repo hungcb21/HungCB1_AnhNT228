@@ -27,7 +27,7 @@ class _HomeScreenState extends State<HomeScreen> {
               child: Column(
                 children: [
                   BlocBuilder<CoinsBloc, CoinsState>(builder: (context, state) {
-                    if (state is ListCoinsLoaded) {
+                    if (state is CoinsLoadSuccess) {
                       return SearchBar(state.listCoins!);
                     }
                     return SearchBar([]);
@@ -60,7 +60,7 @@ class _HomeScreenState extends State<HomeScreen> {
                     Flexible(
                       child: BlocBuilder<CoinsBloc, CoinsState>(
                         builder: (BuildContext context, state) {
-                          if (state is ListCoinsLoaded) {
+                          if (state is CoinsLoadSuccess) {
                             return ListView.builder(
                               itemCount: state.listCoins!.length,
                               itemBuilder: (BuildContext context, int index) {
@@ -86,11 +86,11 @@ class _HomeScreenState extends State<HomeScreen> {
                                 );
                               },
                             );
-                          } else if (state is ListCoinsLoading) {
+                          } else if (state is CoinsLoadInProgress) {
                             return Center(
                               child: CircularProgressIndicator(),
                             );
-                          } else if (state is ListCoinsLoadFail) {
+                          } else if (state is CoinsLoadFailure) {
                             return Center(
                               child: Text(
                                 state.error!,

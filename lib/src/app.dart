@@ -24,7 +24,7 @@ class MyApp extends StatelessWidget {
         debugShowCheckedModeBanner: false,
         home: BlocProvider(
             create: (context) => CoinsBloc(service: AppCoinService(httpClient))
-              ..add(FetchListCoins(currency: 'usd', sparkline: true)),
+              ..add(CoinsGetListCoin(currency: 'usd', sparkline: true)),
             child: HomeScreen()),
       ),
     );

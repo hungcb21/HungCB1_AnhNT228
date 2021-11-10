@@ -8,18 +8,18 @@ abstract class CoinsState extends Equatable {
   List<Object?> get props => [];
 }
 
-class ListCoinsEmpty extends CoinsState {}
+class CoinsInitial  extends CoinsState {}
 
-class ListCoinsLoading extends CoinsState {}
+class CoinsLoadInProgress extends CoinsState {}
 
-class ListCoinsLoaded extends CoinsState {
+class CoinsLoadSuccess extends CoinsState {
   final List<Coins>? listCoins;
-  ListCoinsLoaded({this.listCoins});
+  CoinsLoadSuccess({this.listCoins});
 
 }
 
-class ListCoinsLoadFail extends CoinsState {
+class CoinsLoadFailure extends CoinsState {
   String? error;
 
-  ListCoinsLoadFail({this.error});
+  CoinsLoadFailure({this.error});
 }

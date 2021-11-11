@@ -1,7 +1,7 @@
-import 'package:crypto_mobile_application/src/constants/routes.dart';
-import 'package:crypto_mobile_application/src/screens/detail_screen/detail_screen.dart';
-import 'package:crypto_mobile_application/src/screens/home_screen/home_screen.dart';
-import 'package:crypto_mobile_application/src/screens/not_found_screen/not_found_screen.dart';
+import '../constants/routes.dart';
+import '../screens/detail_screen/detail_screen.dart';
+import '../screens/home_screen/home_screen.dart';
+import '../screens/not_found_screen/not_found_screen.dart';
 import 'package:flutter/material.dart';
 
 class AppRoute {

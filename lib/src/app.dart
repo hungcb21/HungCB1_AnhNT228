@@ -1,4 +1,4 @@
-import 'package:crypto_mobile_application/src/constants/routes.dart';
+import 'constants/routes.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:http/http.dart' as http;

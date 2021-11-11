@@ -1,13 +1,14 @@
+import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+
 import '../../blocs/coins_bloc/coins_bloc.dart';
 import '../../blocs/coins_bloc/coins_state.dart';
 import '../../constants/colors.dart';
 import '../../constants/strings.dart';
 import '../../constants/text_style.dart';
-import '../detail_screen/detail_screen.dart';
 import '../../widgets/coin_card.dart';
 import '../../widgets/search_bar.dart';
-import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
+import '../detail_screen/detail_screen.dart';
 
 class HomeScreen extends StatefulWidget {
   @override
@@ -98,7 +99,7 @@ class _HomeScreenState extends State<HomeScreen> {
                               ),
                             );
                           }
-                          return Center(child: Text(StringData.listEmpty));
+                          return Center(child: Text(StringData.emptyList));
                         },
                       ),
                     ),

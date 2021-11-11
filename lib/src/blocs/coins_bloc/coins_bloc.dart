@@ -16,7 +16,7 @@ class CoinsBloc extends Bloc<CoinsEvent, CoinsState> {
         final coins = await service!.getCoinsFromAPI(
             currency: event.currency!,
             start: 1,
-            limit: StringData.number_of_coins_per_state,
+            limit: StringData.NUMBER_OF_COIN_PER_STATE,
             sparkline: event.sparkline!);
         yield CoinsLoadSuccess(listCoins: coins);
       } catch (e) {

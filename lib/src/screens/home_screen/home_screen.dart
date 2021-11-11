@@ -88,11 +88,13 @@ class _HomeScreenState extends State<HomeScreen> {
                                 );
                               },
                             );
-                          } else if (state is CoinsLoadInProgress) {
+                          }
+                          if (state is CoinsLoadInProgress) {
                             return Center(
                               child: CircularProgressIndicator(),
                             );
-                          } else if (state is CoinsLoadFailure) {
+                          }
+                          if (state is CoinsLoadFailure) {
                             return Center(
                               child: Text(
                                 state.error!,

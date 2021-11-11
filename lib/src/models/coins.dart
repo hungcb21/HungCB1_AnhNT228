@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 class Coins {
   String id;
   String name;
@@ -41,7 +43,7 @@ class Coins {
       name: json["name"],
       symbol: json['symbol'],
       image: json['image'],
-      ath: json['aut'],
+      ath: json['ath'],
       ath_change_percentage: json['ath_change_percentage'],
       ath_date: json['ath_date'],
       atl: json['atl'],
@@ -55,4 +57,27 @@ class Coins {
       sparkline_in_7d: json['sparkline_in_7d']['price'],
     );
   }
+
+  Map<String, dynamic> toMap() {
+    return {
+      'id': id,
+      'name': name,
+      'symbol': symbol,
+      'image': image,
+      'current_price': current_price,
+      'high_24h': high_24h,
+      'low_24h': low_24h,
+      'price_change_24h': price_change_24h,
+      'ath': ath,
+      'ath_change_percentage': ath_change_percentage,
+      'ath_date': ath_date,
+      'atl': atl,
+      'atl_change_percentage': atl_change_percentage,
+      'atl_date': atl_date,
+      'last_updated': last_updated,
+      'sparkline_in_7d' ' price': sparkline_in_7d,
+    };
+  }
+
+  String toJson() => json.encode(toMap());
 }

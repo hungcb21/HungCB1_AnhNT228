@@ -1,7 +1,5 @@
 import 'dart:convert';
-
 import 'package:http/http.dart' as http;
-
 import '../constants/strings.dart';
 import '../models/coins.dart';
 import 'coin_service.dart';
@@ -14,7 +12,7 @@ class AppCoinService extends CoinService {
       required int start,
       required int limit,
       required bool sparkline}) async {
-    var url = Uri.parse(StringData.final_api_url +
+    var url = Uri.parse(StringData.FINAL_API_URL +
         '/markets?vs_currency=$currency&order=market_cap_desc&per_page=$limit&page=$start&sparkline=$sparkline');
 
     final response = await client.get(url);

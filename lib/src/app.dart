@@ -26,10 +26,15 @@ class MyApp extends StatelessWidget {
         debugShowCheckedModeBanner: false,
         onGenerateRoute: AppRoute.generateRoute,
         initialRoute: RouteConstant.welcomeRoute,
-        home: BlocProvider(
-            create: (context) => CoinsBloc(service: AppCoinService(httpClient))
-              ..add(GetListCoins(currency: 'usd', sparkline: true)),
-            child: HomeScreen()),
+        home: MultiBlocProvider(
+          providers:[
+            BlocProvider(
+                create: (context) => CoinsBloc(service: AppCoinService(httpClient))
+                  ..add(GetListCoins(currency: 'usd', sparkline: true)),
+               ),
+          ],
+            child: HomeScreen()
+        ),
       ),
     );
   }

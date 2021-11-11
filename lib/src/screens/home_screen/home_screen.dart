@@ -1,3 +1,4 @@
+import 'package:crypto_mobile_application/src/constants/routes.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -39,7 +40,6 @@ class _HomeScreenState extends State<HomeScreen> {
             Expanded(
               flex: 4,
               child: Container(
-                width: double.infinity,
                 padding: EdgeInsets.fromLTRB(20, 40, 20, 0),
                 decoration: BoxDecoration(
                   color: ColorsApp.backgroundBottomColor,
@@ -76,12 +76,11 @@ class _HomeScreenState extends State<HomeScreen> {
                                         state.listCoins![index].current_price!,
                                     price_change: state
                                         .listCoins![index].price_change_24h!,
-                                    onTap: () {
-                                      Navigator.push(
-                                          context,
-                                          MaterialPageRoute(
-                                              builder: (context) =>
-                                                  DetailScreen()));
+                                    onTap: () => {
+                                      Navigator.pushNamed(
+                                        context,
+                                        RouteConstant.detailRoute,
+                                      )
                                     },
                                   ),
                                 );

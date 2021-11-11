@@ -20,24 +20,19 @@ class _SearchBarState extends State<SearchBar> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: EdgeInsets.all(20),
       decoration: BoxDecoration(
           color: Colors.white,
           borderRadius: BorderRadius.all(Radius.circular(20))),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceAround,
         children: [
-          SizedBox(
-            width: 20,
-          ),
+          SizedBox(width: 20),
           Icon(
             Icons.search,
             size: 30,
             color: Colors.blueAccent,
           ),
-          SizedBox(
-            width: 10,
-          ),
+          SizedBox(width: 10),
           Flexible(
             child: Autocomplete<Coins>(
               displayStringForOption: _displayStringForOption,

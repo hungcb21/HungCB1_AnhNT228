@@ -7,6 +7,4 @@ class StringData {
   static const String errorMessage = 'Failed to load coins list';
   static const int number_of_coins_per_state = 100;
   static const String final_api_url = 'https://api.coingecko.com/api/v3/coins';
-
-
 }

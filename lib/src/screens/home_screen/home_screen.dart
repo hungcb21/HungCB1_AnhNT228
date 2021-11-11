@@ -7,7 +7,7 @@ import '../../constants/strings.dart';
 import '../../constants/text_style.dart';
 import '../../widgets/coin_card.dart';
 import '../../widgets/search_bar.dart';
-import 'package:crypto_mobile_application/src/constants/routes.dart';
+import '../../constants/routes.dart';
 
 class HomeScreen extends StatefulWidget {
   @override

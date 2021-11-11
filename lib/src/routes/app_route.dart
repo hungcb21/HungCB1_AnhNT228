@@ -1,10 +1,9 @@
-import 'package:crypto_mobile_application/src/models/coins.dart';
-
+import 'package:flutter/material.dart';
 import '../constants/routes.dart';
+import '../models/coins.dart';
 import '../screens/detail_screen/detail_screen.dart';
 import '../screens/home_screen/home_screen.dart';
 import '../screens/not_found_screen/not_found_screen.dart';
-import 'package:flutter/material.dart';
 
 class AppRoute {
   static Route<dynamic> generateRoute(RouteSettings settings) {

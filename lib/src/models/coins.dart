@@ -5,13 +5,13 @@ class Coins {
   String image;
   num? current_price;
   num? high_24h;
-  num low_24h;
+  num? low_24h;
   num? price_change_24h;
   num? ath;
   num? ath_change_percentage;
   String ath_date;
   num? atl;
-  double atl_change_percentage;
+  num? atl_change_percentage;
   String atl_date;
   String last_updated;
   List<dynamic> sparkline_in_7d;

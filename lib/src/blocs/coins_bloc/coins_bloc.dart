@@ -10,7 +10,6 @@ class CoinsBloc extends Bloc<CoinsEvent, CoinsState> {
   CoinService? service;
   @override
   Stream<CoinsState> mapEventToState(CoinsEvent event) async* {
-    // TODO: implement mapEventToState
     if (event is GetListCoins) {
       try {
         yield CoinsLoadInProgress();

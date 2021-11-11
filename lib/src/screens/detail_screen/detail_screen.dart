@@ -1,13 +1,11 @@
-import 'package:crypto_mobile_application/src/models/coins.dart';
+import '../../models/coins.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:syncfusion_flutter_charts/sparkcharts.dart';
-
 import '../../constants/colors.dart';
+import 'package:syncfusion_flutter_charts/sparkcharts.dart';
 
 class DetailScreen extends StatefulWidget {
   Coins coins;
-
   DetailScreen(this.coins);
 
   @override

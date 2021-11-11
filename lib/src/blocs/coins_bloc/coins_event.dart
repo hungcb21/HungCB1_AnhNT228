@@ -9,9 +9,5 @@ class GetListCoins extends CoinsEvent {
   String? currency;
   bool? sparkline;
 
-
-  GetListCoins({ this.currency, this.sparkline});
+  GetListCoins({this.currency, this.sparkline});
 }
-
-
-

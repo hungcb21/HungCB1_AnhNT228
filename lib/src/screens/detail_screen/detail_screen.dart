@@ -9,12 +9,9 @@ class DetailScreen extends StatefulWidget {
   _DetailScreenState createState() => _DetailScreenState();
 }
 
-//Class which is used as type for the data source.
-
 class _DetailScreenState extends State<DetailScreen> {
   @override
   void initState() {
-    // Calling getData method to add data to the list
     super.initState();
   }
 

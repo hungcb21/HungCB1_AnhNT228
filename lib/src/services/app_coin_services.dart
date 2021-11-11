@@ -23,7 +23,7 @@ class AppCoinService extends CoinService {
       }).toList();
       return listCoins;
     } else {
-      throw Exception(StringData.errorMessage);
+      throw Exception().toString();
     }
   }
 }

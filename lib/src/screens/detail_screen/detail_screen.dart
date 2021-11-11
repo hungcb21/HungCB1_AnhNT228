@@ -36,7 +36,7 @@ class _DetailScreenState extends State<DetailScreen> {
             size: 40,
           ),
           onPressed: () {
-            Navigator.pop(context);
+            canPop();
           },
         ),
       ),
@@ -80,5 +80,8 @@ class _DetailScreenState extends State<DetailScreen> {
         ],
       ),
     );
+  }
+  void canPop(){
+    Navigator.pop(context);
   }
 }

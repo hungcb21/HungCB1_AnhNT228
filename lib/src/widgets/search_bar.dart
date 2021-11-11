@@ -6,9 +6,9 @@ import '../models/coins.dart';
 import '../screens/detail_screen/detail_screen.dart';
 
 class SearchBar extends StatefulWidget {
-  List<Coins> datalist;
+  List<Coins> coinslist;
 
-  SearchBar(this.datalist);
+  SearchBar(this.coinslist);
 
   @override
   _SearchBarState createState() => _SearchBarState();
@@ -54,7 +54,7 @@ class _SearchBarState extends State<SearchBar> {
                 if (textEditingValue.text.isEmpty) {
                   return const Iterable<Coins>.empty();
                 }
-                return widget.datalist.where((Coins option) {
+                return widget.coinslist.where((Coins option) {
                   return option.name
                           .toString()
                           .toLowerCase()

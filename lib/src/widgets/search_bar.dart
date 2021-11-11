@@ -26,17 +26,13 @@ class _SearchBarState extends State<SearchBar> {
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceAround,
         children: [
-          SizedBox(
-            width: 20,
-          ),
+          SizedBox(width: 20),
           Icon(
             Icons.search,
             size: 30,
             color: Colors.blueAccent,
           ),
-          SizedBox(
-            width: 10,
-          ),
+          SizedBox(width: 10),
           Flexible(
             child: Autocomplete<Coins>(
               displayStringForOption: _displayStringForOption,
@@ -102,9 +98,9 @@ class _SearchBarState extends State<SearchBar> {
                   ),
                 );
               },
-              onSelected: (Coins selection) {
+              onSelected: (Coins coin) {
                 Navigator.push(context,
-                    MaterialPageRoute(builder: (context) => DetailScreen()));
+                    MaterialPageRoute(builder: (context) => DetailScreen(coin)));
               },
             ),
           ),

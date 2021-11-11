@@ -1,3 +1,6 @@
+import 'package:crypto_mobile_application/src/routes/app_route.dart';
+
+import 'constants/routes.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:http/http.dart' as http;
@@ -8,7 +11,6 @@ import 'screens/home_screen/home_screen.dart';
 import 'services/app_coin_services.dart';
 
 class MyApp extends StatelessWidget {
-  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
     final httpClient = http.Client();
@@ -22,6 +24,8 @@ class MyApp extends StatelessWidget {
       },
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
+        onGenerateRoute: AppRoute.generateRoute,
+        initialRoute: RouteConstant.welcomeRoute,
         home: BlocProvider(
             create: (context) => CoinsBloc(service: AppCoinService(httpClient))
               ..add(GetListCoins(currency: 'usd', sparkline: true)),

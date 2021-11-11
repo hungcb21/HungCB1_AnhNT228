@@ -5,10 +5,9 @@ import '../../blocs/coins_bloc/coins_state.dart';
 import '../../constants/colors.dart';
 import '../../constants/strings.dart';
 import '../../constants/text_style.dart';
-import '../detail_screen/detail_screen.dart';
 import '../../widgets/coin_card.dart';
 import '../../widgets/search_bar.dart';
-
+import 'package:crypto_mobile_application/src/constants/routes.dart';
 
 class HomeScreen extends StatefulWidget {
   @override
@@ -16,6 +15,8 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
+  double heightOfTopContainer = 200;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -24,7 +25,8 @@ class _HomeScreenState extends State<HomeScreen> {
         child: Column(
           children: [
             Container(
-              height: 200,
+              height: heightOfTopContainer,
+              padding: EdgeInsets.all(20),
               child: Column(
                 children: [
                   BlocBuilder<CoinsBloc, CoinsState>(builder: (context, state) {
@@ -39,7 +41,6 @@ class _HomeScreenState extends State<HomeScreen> {
             Expanded(
               flex: 4,
               child: Container(
-                width: double.infinity,
                 padding: EdgeInsets.fromLTRB(20, 40, 20, 0),
                 decoration: BoxDecoration(
                   color: ColorsApp.backgroundBottomColor,
@@ -73,15 +74,15 @@ class _HomeScreenState extends State<HomeScreen> {
                                     name: state.listCoins![index].name,
                                     symbol: state.listCoins![index].symbol,
                                     price:
-                                        state.listCoins![index].current_price!,
-                                    price_change: state
-                                        .listCoins![index].price_change_24h!,
-                                    onTap: () {
-                                      Navigator.push(
-                                          context,
-                                          MaterialPageRoute(
-                                              builder: (context) =>
-                                                  DetailScreen()));
+                                        state.listCoins![index].current_price ??
+                                            0,
+                                    price_change: state.listCoins![index]
+                                            .price_change_24h ??
+                                        0,
+                                    onTap: () => {
+                                      Navigator.pushNamed(
+                                          context, RouteConstant.detailRoute,
+                                          arguments: state.listCoins![index])
                                     },
                                   ),
                                 );
@@ -99,7 +100,7 @@ class _HomeScreenState extends State<HomeScreen> {
                               ),
                             );
                           }
-                          return Center(child: Text(StringData.listEmpty));
+                          return Center(child: Text(StringData.emptyList));
                         },
                       ),
                     ),

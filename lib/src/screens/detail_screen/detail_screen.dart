@@ -1,3 +1,4 @@
+import 'package:crypto_mobile_application/src/models/coins.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:syncfusion_flutter_charts/sparkcharts.dart';
@@ -5,16 +6,17 @@ import 'package:syncfusion_flutter_charts/sparkcharts.dart';
 import '../../constants/colors.dart';
 
 class DetailScreen extends StatefulWidget {
+  Coins coins;
+
+  DetailScreen(this.coins);
+
   @override
   _DetailScreenState createState() => _DetailScreenState();
 }
 
-//Class which is used as type for the data source.
-
 class _DetailScreenState extends State<DetailScreen> {
   @override
   void initState() {
-    // Calling getData method to add data to the list
     super.initState();
   }
 

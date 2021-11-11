@@ -1,3 +1,5 @@
+import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../blocs/coins_bloc/coins_bloc.dart';
 import '../../blocs/coins_bloc/coins_state.dart';
 import '../../constants/colors.dart';
@@ -6,8 +8,7 @@ import '../../constants/text_style.dart';
 import '../detail_screen/detail_screen.dart';
 import '../../widgets/coin_card.dart';
 import '../../widgets/search_bar.dart';
-import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
+
 
 class HomeScreen extends StatefulWidget {
   @override
@@ -68,9 +69,9 @@ class _HomeScreenState extends State<HomeScreen> {
                                   padding:
                                       const EdgeInsets.symmetric(vertical: 10),
                                   child: CoinCard(
-                                    image: state.listCoins![index].image!,
-                                    name: state.listCoins![index].name!,
-                                    symbol: state.listCoins![index].symbol!,
+                                    image: state.listCoins![index].image,
+                                    name: state.listCoins![index].name,
+                                    symbol: state.listCoins![index].symbol,
                                     price:
                                         state.listCoins![index].current_price!,
                                     price_change: state

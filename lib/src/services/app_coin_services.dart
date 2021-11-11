@@ -14,7 +14,7 @@ class AppCoinService extends CoinService {
       required int start,
       required int limit,
       required bool sparkline}) async {
-    var url = Uri.parse(StringData.FINAL_API_URL +
+    var url = Uri.parse(StringData.final_api_url +
         '/markets?vs_currency=$currency&order=market_cap_desc&per_page=$limit&page=$start&sparkline=$sparkline');
 
     final response = await client.get(url);

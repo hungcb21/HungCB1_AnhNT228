@@ -3,7 +3,6 @@ import 'package:equatable/equatable.dart';
 
 abstract class CoinsState extends Equatable {
   @override
-  // TODO: implement props
   List<Object?> get props => [];
 }
 
@@ -15,10 +14,15 @@ class CoinsLoadSuccess extends CoinsState {
   final List<Coins>? listCoins;
 
   CoinsLoadSuccess({this.listCoins});
+  @override
+  // TODO: implement props
+  List<Object?> get props => [listCoins];
 }
 
 class CoinsLoadFailure extends CoinsState {
   String? error;
-
   CoinsLoadFailure({this.error});
+  @override
+  // TODO: implement props
+  List<Object?> get props => [error];
 }

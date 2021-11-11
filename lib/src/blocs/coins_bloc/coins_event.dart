@@ -8,9 +8,10 @@ abstract class CoinsEvent extends Equatable {
 class GetListCoins extends CoinsEvent {
   String? currency;
   bool? sparkline;
-
-
   GetListCoins({ this.currency, this.sparkline});
+  @override
+  // TODO: implement props
+  List<Object?> get props => [currency,sparkline];
 }
 
 

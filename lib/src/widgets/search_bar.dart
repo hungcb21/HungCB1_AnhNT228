@@ -15,12 +15,11 @@ class SearchBar extends StatefulWidget {
 }
 
 class _SearchBarState extends State<SearchBar> {
-  String _displayStringForOption(Coins option) => option.name!;
+  String _displayStringForOption(Coins option) => option.name;
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: EdgeInsets.all(20),
       decoration: BoxDecoration(
           color: Colors.white,
           borderRadius: BorderRadius.all(Radius.circular(20))),
@@ -87,12 +86,12 @@ class _SearchBarState extends State<SearchBar> {
                           child: Card(
                             child: ListTile(
                               leading: Image.network(
-                                option.image!,
+                                option.image,
                                 errorBuilder: (context, error, strackTrace) =>
                                     Icon(Icons.error),
                               ),
                               title: Text(
-                                option.name!,
+                                option.name,
                                 style: TextStylesApp.nameCoin,
                               ),
                             ),

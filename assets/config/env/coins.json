@@ -1,0 +1,11 @@
+{
+  "ENV": "coins",
+  "HOST_NAME": "https://api.coingecko.com/api/v3",
+  "COIN_PATH": "/coins",
+  "MARKET_PATH": "/markets",
+  "CURRENCY": "?vs_currency=",
+  "LIMIT": "&per_page=",
+  "START": "&page=",
+  "SPARKLINE": "&sparkline=",
+  "ORDER": "&order=market_cap_desc"
+}

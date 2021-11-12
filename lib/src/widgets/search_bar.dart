@@ -6,7 +6,6 @@ import '../screens/detail_screen/detail_screen.dart';
 
 class SearchBar extends StatefulWidget {
   List<Coins> coinslist;
-
   SearchBar(this.coinslist);
 
   @override

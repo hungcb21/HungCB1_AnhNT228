@@ -21,6 +21,14 @@ class _DetailScreenState extends State<DetailScreen> {
 
   @override
   Widget build(BuildContext context) {
+    double heightOfTopContainer = 150;
+    double heightOfChartCoin = 200;
+    final chartCoinPadding = EdgeInsets.fromLTRB(20, 40, 20, 0);
+    final chartCoinBorderRadius = BorderRadius.only(
+      topRight: Radius.circular(40),
+      topLeft: Radius.circular(40),
+    );
+
     return Scaffold(
       backgroundColor: ColorsApp.backgroundColor,
       appBar: AppBar(
@@ -43,24 +51,20 @@ class _DetailScreenState extends State<DetailScreen> {
       body: Column(
         children: [
           Container(
-            height: 150,
+            height: heightOfTopContainer,
           ),
           Expanded(
             child: Container(
               width: double.infinity,
-              padding: EdgeInsets.fromLTRB(20, 40, 20, 0),
+              padding: chartCoinPadding,
               decoration: BoxDecoration(
-                color: ColorsApp.backgroundBottomColor,
-                borderRadius: BorderRadius.only(
-                  topRight: Radius.circular(40),
-                  topLeft: Radius.circular(40),
-                ),
-              ),
+                  color: ColorsApp.backgroundBottomColor,
+                  borderRadius: chartCoinBorderRadius),
               child: SingleChildScrollView(
                 child: Column(
                   children: [
                     Container(
-                      height: 200,
+                      height: heightOfChartCoin,
                       child: SfSparkAreaChart(
                           color: Colors.yellow,
                           labelDisplayMode: SparkChartLabelDisplayMode.high,
@@ -81,7 +85,8 @@ class _DetailScreenState extends State<DetailScreen> {
       ),
     );
   }
-  void canPop(){
+
+  void canPop() {
     Navigator.pop(context);
   }
 }

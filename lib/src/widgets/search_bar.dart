@@ -17,6 +17,7 @@ class _SearchBarState extends State<SearchBar> {
 
   @override
   Widget build(BuildContext context) {
+    double iconSearchAndTextFielsSearchPadding = 10;
     return Container(
       decoration: BoxDecoration(
           color: Colors.white,
@@ -30,7 +31,7 @@ class _SearchBarState extends State<SearchBar> {
             size: 30,
             color: Colors.blueAccent,
           ),
-          SizedBox(width: 10),
+          SizedBox(width: iconSearchAndTextFielsSearchPadding),
           Flexible(
             child: Autocomplete<Coins>(
               displayStringForOption: _displayStringForOption,
@@ -68,7 +69,7 @@ class _SearchBarState extends State<SearchBar> {
                   alignment: Alignment.topLeft,
                   child: Container(
                     color: Colors.white,
-                    width: 300,
+                    width: 200,
                     child: ListView.builder(
                       itemCount: options.length,
                       itemBuilder: (BuildContext context, int index) {

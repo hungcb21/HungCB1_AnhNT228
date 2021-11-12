@@ -1,6 +1,6 @@
+import 'package:crypto_mobile_application/src/constants/colors.dart';
 import 'package:flutter/material.dart';
-
-import 'colors.dart' as constants;
+import 'package:flutter/services.dart';
 
 class AppFontWeight {
   static const thin = FontWeight.w100;
@@ -17,8 +17,8 @@ class AppFontWeight {
 class AppTheme {
   ThemeData lightTheme = ThemeData(
     brightness: Brightness.light,
-    backgroundColor: constants.ColorsApp.backgroundColor,
-    primaryColor: constants.ColorsApp.backgroundBottomColor,
+    backgroundColor: ColorsApp.backgroundColor,
+    primaryColor: ColorsApp.backgroundBottomColor,
     textTheme: const TextTheme(
       headline1: TextStyle(
         fontSize: 28,

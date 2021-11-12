@@ -1,10 +1,6 @@
 import 'dart:convert';
-<<<<<<< HEAD
-
-=======
-import 'package:crypto_mobile_application/src/config/app_config.dart';
-import 'package:crypto_mobile_application/src/config/constants.dart';
->>>>>>> d7691a0b76393fa8aa554897e15d40fda56dc4ac
+import '../config/app_config.dart';
+import '../config/constants.dart';
 import 'package:http/http.dart' as http;
 
 import '../constants/strings.dart';

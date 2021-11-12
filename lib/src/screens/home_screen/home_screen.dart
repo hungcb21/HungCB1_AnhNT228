@@ -17,6 +17,12 @@ class HomeScreen extends StatefulWidget {
 
 class _HomeScreenState extends State<HomeScreen> {
   double heightOfTopContainer = 200;
+  final searchBarPadding = EdgeInsets.fromLTRB(20, 20, 20, 0);
+  final coinListPadding = EdgeInsets.fromLTRB(20, 40, 20, 0);
+  final coinlistBorderRadius = BorderRadius.only(
+      topRight: Radius.circular(40), topLeft: Radius.circular(40));
+  final coinTitlePadding = EdgeInsets.symmetric(vertical: 20);
+  final coinCardPadding = EdgeInsets.symmetric(vertical: 10);
 
   @override
   Widget build(BuildContext context) {
@@ -27,7 +33,7 @@ class _HomeScreenState extends State<HomeScreen> {
           children: [
             Container(
               height: heightOfTopContainer,
-              padding: EdgeInsets.all(20),
+              padding: searchBarPadding,
               child: Column(
                 children: [
                   BlocBuilder<CoinsBloc, CoinsState>(builder: (context, state) {
@@ -42,19 +48,15 @@ class _HomeScreenState extends State<HomeScreen> {
             Expanded(
               flex: 4,
               child: Container(
-                padding: EdgeInsets.fromLTRB(20, 40, 20, 0),
+                padding: coinListPadding,
                 decoration: BoxDecoration(
-                  color: ColorsApp.backgroundBottomColor,
-                  borderRadius: BorderRadius.only(
-                    topRight: Radius.circular(40),
-                    topLeft: Radius.circular(40),
-                  ),
-                ),
+                    color: ColorsApp.backgroundBottomColor,
+                    borderRadius: coinlistBorderRadius),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Padding(
-                      padding: const EdgeInsets.symmetric(vertical: 20),
+                      padding: coinTitlePadding,
                       child: Text(StringData.listCoinsTitle,
                           style: Theme.of(context)
                               .textTheme
@@ -69,8 +71,7 @@ class _HomeScreenState extends State<HomeScreen> {
                               itemCount: state.listCoins!.length,
                               itemBuilder: (BuildContext context, int index) {
                                 return Padding(
-                                  padding:
-                                      const EdgeInsets.symmetric(vertical: 10),
+                                  padding: coinCardPadding,
                                   child: CoinCard(
                                     image: state.listCoins![index].image,
                                     name: state.listCoins![index].name,

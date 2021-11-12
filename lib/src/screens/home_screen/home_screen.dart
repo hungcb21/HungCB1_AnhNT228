@@ -6,7 +6,7 @@ import '../../blocs/coins_bloc/coins_state.dart';
 import '../../constants/app_theme.dart';
 import '../../constants/colors.dart';
 import '../../constants/routes.dart';
-import '../../constants/strings.dart';
+import '../../constants/string_data.dart';
 import '../../widgets/coin_card.dart';
 import '../../widgets/search_bar.dart';
 

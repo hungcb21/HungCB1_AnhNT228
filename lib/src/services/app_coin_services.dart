@@ -3,7 +3,7 @@ import '../config/app_config.dart';
 import '../config/constants.dart';
 import 'package:http/http.dart' as http;
 
-import '../constants/strings.dart';
+import '../constants/string_data.dart';
 import '../models/coins.dart';
 import 'coin_service.dart';
 

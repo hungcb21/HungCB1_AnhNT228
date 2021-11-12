@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../constants/strings.dart';
+import '../constants/string_data.dart';
 
 class CoinCard extends StatelessWidget {
   VoidCallback onTap;

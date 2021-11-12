@@ -1,6 +1,6 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-import '../../constants/strings.dart';
+import '../../constants/string_data.dart';
 import '../../services/coin_service.dart';
 import 'coins_event.dart';
 import 'coins_state.dart';

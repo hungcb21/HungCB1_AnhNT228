@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 
 import '../constants/strings.dart';
-import '../constants/text_style.dart';
 import '../models/coins.dart';
 import '../screens/detail_screen/detail_screen.dart';
 
@@ -88,7 +87,7 @@ class _SearchBarState extends State<SearchBar> {
                               ),
                               title: Text(
                                 option.name,
-                                style: TextStylesApp.nameCoin,
+                                style: Theme.of(context).textTheme.headline6,
                               ),
                             ),
                           ),
@@ -99,8 +98,10 @@ class _SearchBarState extends State<SearchBar> {
                 );
               },
               onSelected: (Coins coin) {
-                Navigator.push(context,
-                    MaterialPageRoute(builder: (context) => DetailScreen(coin)));
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => DetailScreen(coin)));
               },
             ),
           ),

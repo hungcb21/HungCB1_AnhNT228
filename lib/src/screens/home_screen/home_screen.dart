@@ -1,13 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+
 import '../../blocs/coins_bloc/coins_bloc.dart';
 import '../../blocs/coins_bloc/coins_state.dart';
+import '../../constants/app_theme.dart';
 import '../../constants/colors.dart';
+import '../../constants/routes.dart';
 import '../../constants/strings.dart';
-import '../../constants/text_style.dart';
 import '../../widgets/coin_card.dart';
 import '../../widgets/search_bar.dart';
-import '../../constants/routes.dart';
 
 class HomeScreen extends StatefulWidget {
   @override
@@ -54,10 +55,11 @@ class _HomeScreenState extends State<HomeScreen> {
                   children: [
                     Padding(
                       padding: const EdgeInsets.symmetric(vertical: 20),
-                      child: const Text(
-                        StringData.listCoinsTitle,
-                        style: TextStylesApp.listCoinsTitle,
-                      ),
+                      child: Text(StringData.listCoinsTitle,
+                          style: Theme.of(context)
+                              .textTheme
+                              .headline5!
+                              .copyWith(fontWeight: AppFontWeight.extraBold)),
                     ),
                     Flexible(
                       child: BlocBuilder<CoinsBloc, CoinsState>(
@@ -96,10 +98,13 @@ class _HomeScreenState extends State<HomeScreen> {
                           }
                           if (state is CoinsLoadFailure) {
                             return Center(
-                              child: Text(
-                                state.error!,
-                                style: TextStylesApp.listCoinsError,
-                              ),
+                              child: Text(state.error!,
+                                  style: Theme.of(context)
+                                      .textTheme
+                                      .headline5!
+                                      .copyWith(
+                                          fontWeight: AppFontWeight.extraBold,
+                                          color: Colors.red)),
                             );
                           }
                           return Center(child: Text(StringData.emptyList));

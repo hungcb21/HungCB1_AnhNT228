@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 
 import '../constants/strings.dart';
-import '../constants/text_style.dart';
 
 class CoinCard extends StatelessWidget {
   VoidCallback onTap;
@@ -46,7 +45,7 @@ class CoinCard extends StatelessWidget {
           ),
           title: Text(
             name,
-            style: TextStylesApp.nameCoin,
+            style: Theme.of(context).textTheme.headline6,
           ),
           subtitle: Text(
               '${double.parse(price.toString()).toStringAsFixed(3)}  ${symbol.toUpperCase()}'),

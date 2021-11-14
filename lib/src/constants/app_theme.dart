@@ -1,4 +1,4 @@
-import 'package:crypto_mobile_application/src/constants/colors.dart';
+import 'colors.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 

@@ -58,7 +58,7 @@ class Coins {
     );
   }
 
-  Map<String, dynamic> toMap() {
+  Map<String, dynamic> toJson() {
     return {
       'id': id,
       'name': name,
@@ -75,9 +75,8 @@ class Coins {
       'atl_change_percentage': atl_change_percentage,
       'atl_date': atl_date,
       'last_updated': last_updated,
-      'sparkline_in_7d' 'price': sparkline_in_7d,
+      'sparkline_in_7d''price': sparkline_in_7d,
     };
   }
 
-  String toJson() => json.encode(toMap());
 }

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../constants/strings.dart';
+import '../constants/string_data.dart';
 import '../models/coins.dart';
 import '../screens/detail_screen/detail_screen.dart';
 
@@ -18,6 +18,7 @@ class _SearchBarState extends State<SearchBar> {
   @override
   Widget build(BuildContext context) {
     double iconSearchAndTextFielsSearchPadding = 10;
+    double widthOfBoxSeletionSearchBar = 300;
     return Container(
       decoration: BoxDecoration(
           color: Colors.white,
@@ -69,7 +70,7 @@ class _SearchBarState extends State<SearchBar> {
                   alignment: Alignment.topLeft,
                   child: Container(
                     color: Colors.white,
-                    width: 200,
+                    width: widthOfBoxSeletionSearchBar,
                     child: ListView.builder(
                       itemCount: options.length,
                       itemBuilder: (BuildContext context, int index) {

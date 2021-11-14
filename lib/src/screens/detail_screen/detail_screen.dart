@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:syncfusion_flutter_charts/sparkcharts.dart';
 
 import '../../constants/colors.dart';
 import '../../models/coins.dart';
@@ -65,16 +64,6 @@ class _DetailScreenState extends State<DetailScreen> {
                   children: [
                     Container(
                       height: heightOfChartCoin,
-                      child: SfSparkAreaChart(
-                          color: Colors.yellow,
-                          labelDisplayMode: SparkChartLabelDisplayMode.high,
-                          borderColor: Colors.orange,
-                          borderWidth: 2,
-                          trackball: SparkChartTrackball(
-                              borderWidth: 2,
-                              borderColor: Colors.black,
-                              activationMode: SparkChartActivationMode.tap),
-                          data: [5, 3, 6, 10, 7]),
                     ),
                   ],
                 ),

@@ -8,11 +8,11 @@ import '../screens/not_found_screen/not_found_screen.dart';
 
 class AppRoute {
   static Route<dynamic> generateRoute(RouteSettings settings) {
-    final coins = settings.arguments as Coins;
     switch (settings.name) {
       case RouteConstant.welcomeRoute:
         return MaterialPageRoute(builder: (_) => HomeScreen());
       case RouteConstant.detailRoute:
+        final coins = settings.arguments as Coins;
         return MaterialPageRoute(builder: (_) => DetailScreen(coins));
       default:
         return MaterialPageRoute(

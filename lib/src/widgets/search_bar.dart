@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 
 import '../constants/string_data.dart';
 import '../models/coins.dart';
-import '../screens/detail_screen/detail_screen.dart';
 
 class SearchBar extends StatefulWidget {
   List<Coins> coinslist;

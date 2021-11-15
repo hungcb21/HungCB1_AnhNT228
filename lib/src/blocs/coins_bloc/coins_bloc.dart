@@ -1,3 +1,4 @@
+import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../constants/string_data.dart';
@@ -6,7 +7,7 @@ import 'coins_event.dart';
 import 'coins_state.dart';
 
 class CoinsBloc extends Bloc<CoinsEvent, CoinsState> {
-  CoinsBloc({this.service}) : super(CoinsInitial());
+  CoinsBloc({required this.service}) : super(CoinsInitial());
   CoinService? service;
   @override
   Stream<CoinsState> mapEventToState(CoinsEvent event) async* {

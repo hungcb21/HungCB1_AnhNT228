@@ -1,10 +1,10 @@
 import 'dart:convert';
 
-import '../constants/string_data.dart';
 import 'package:http/http.dart' as http;
 
 import '../config/app_config.dart';
 import '../config/constants.dart';
+import '../constants/string_data.dart';
 import '../models/coins.dart';
 import 'coin_service.dart';
 
@@ -27,7 +27,7 @@ class AppCoinService extends CoinService {
       }).toList();
       return listCoins;
     } else {
-      throw Exception(StringData.errorMessage).toString();
+      throw Exception(StringData.errorListMessage).toString();
     }
   }
 }

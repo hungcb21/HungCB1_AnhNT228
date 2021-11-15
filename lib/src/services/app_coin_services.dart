@@ -1,5 +1,6 @@
 import 'dart:convert';
 
+import 'package:crypto_mobile_application/src/constants/string_data.dart';
 import 'package:http/http.dart' as http;
 
 import '../config/app_config.dart';
@@ -37,7 +38,7 @@ class AppCoinService extends CoinService {
       }).toList();
       return listCoins;
     } else {
-      throw Exception().toString();
+      throw Exception(StringData.errorMessage).toString();
     }
   }
 }

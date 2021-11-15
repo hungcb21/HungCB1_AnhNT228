@@ -1,6 +1,7 @@
-import 'colors.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+
+import 'colors.dart';
 
 class AppFontWeight {
   static const thin = FontWeight.w100;

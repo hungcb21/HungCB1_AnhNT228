@@ -1,8 +1,8 @@
-import 'package:crypto_mobile_application/src/blocs/coins_bloc/coins_event.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../blocs/coins_bloc/coins_bloc.dart';
+import '../../blocs/coins_bloc/coins_event.dart';
 import '../../blocs/coins_bloc/coins_state.dart';
 import '../../constants/app_theme.dart';
 import '../../constants/colors.dart';

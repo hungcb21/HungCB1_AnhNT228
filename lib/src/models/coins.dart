@@ -1,5 +1,3 @@
-import 'dart:convert';
-
 class Coins {
   String id;
   String name;
@@ -75,8 +73,7 @@ class Coins {
       'atl_change_percentage': atl_change_percentage,
       'atl_date': atl_date,
       'last_updated': last_updated,
-      'sparkline_in_7d''price': sparkline_in_7d,
+      'sparkline_in_7d' 'price': sparkline_in_7d,
     };
   }
-
 }

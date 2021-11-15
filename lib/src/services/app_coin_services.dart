@@ -1,5 +1,7 @@
 import 'dart:convert';
+
 import 'package:http/http.dart' as http;
+
 import '../config/app_config.dart';
 import '../config/constants.dart';
 import '../models/coins.dart';
@@ -8,10 +10,11 @@ import 'coin_service.dart';
 class AppCoinService extends CoinService {
   AppCoinService(http.Client client) : super(client);
 
-  Future<List<Coins>> getCoinsFromAPI({required String currency,
-    required int start,
-    required int limit,
-    required bool sparkline}) async {
+  Future<List<Coins>> getCoinsFromAPI(
+      {required String currency,
+      required int start,
+      required int limit,
+      required bool sparkline}) async {
     var url = Uri.parse(
         '${AppConfig.instance.getValue(AppConstants.HOST_NAME)}' +
             '${AppConfig.instance.getValue(AppConstants.COIN_PATH)}' +

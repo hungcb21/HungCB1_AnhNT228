@@ -7,14 +7,15 @@ import 'coins_event.dart';
 import 'coins_state.dart';
 
 class CoinsBloc extends Bloc<CoinsEvent, CoinsState> {
-  CoinsBloc({this.service}) : super(CoinsInitial());
-  CoinService? service;
+  CoinService service;
+  CoinsBloc({required this.service}) : super(CoinsInitial());
+
   @override
   Stream<CoinsState> mapEventToState(CoinsEvent event) async* {
     if (event is GetListCoins) {
       try {
         yield CoinsLoadInProgress();
-        final coins = await service!.getCoinsFromAPI(
+        final coins = await service.getCoinsFromAPI(
             currency: event.currency!,
             start: 1,
             limit: StringData.NUMBER_OF_COIN_PER_STATE,

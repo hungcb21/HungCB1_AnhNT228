@@ -31,6 +31,7 @@ class _DetailScreenState extends State<DetailScreen> {
     return Scaffold(
       backgroundColor: ColorsApp.backgroundColor,
       appBar: AppBar(
+        automaticallyImplyLeading: true,
         elevation: 0,
         backwardsCompatibility: false,
         systemOverlayStyle:
@@ -42,9 +43,7 @@ class _DetailScreenState extends State<DetailScreen> {
             Icons.arrow_back,
             size: 40,
           ),
-          onPressed: () {
-            canPop();
-          },
+          onPressed: () => {Navigator.pop(context)},
         ),
       ),
       body: Column(
@@ -73,9 +72,5 @@ class _DetailScreenState extends State<DetailScreen> {
         ],
       ),
     );
-  }
-
-  void canPop() {
-    Navigator.pop(context);
   }
 }

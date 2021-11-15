@@ -1,3 +1,4 @@
+import 'package:crypto_mobile_application/src/constants/routes.dart';
 import 'package:flutter/material.dart';
 
 import '../constants/string_data.dart';
@@ -99,10 +100,8 @@ class _SearchBarState extends State<SearchBar> {
                 );
               },
               onSelected: (Coins coin) {
-                Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                        builder: (context) => DetailScreen(coin)));
+                Navigator.pushNamed(context, RouteConstant.detailRoute,
+                    arguments: coin);
               },
             ),
           ),

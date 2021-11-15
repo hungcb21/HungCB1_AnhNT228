@@ -1,3 +1,4 @@
+import 'package:crypto_mobile_application/src/blocs/coins_bloc/coins_event.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -67,30 +68,37 @@ class _HomeScreenState extends State<HomeScreen> {
                       child: BlocBuilder<CoinsBloc, CoinsState>(
                         builder: (BuildContext context, state) {
                           if (state is CoinsLoadSuccess) {
-                            return ListView.builder(
-                              itemCount: state.listCoins!.length,
-                              itemBuilder: (BuildContext context, int index) {
-                                return Padding(
-                                  padding: coinCardPadding,
-                                  child: CoinCard(
-                                    image: state.listCoins![index].image,
-                                    name: state.listCoins![index].name,
-                                    symbol: state.listCoins![index].symbol,
-                                    price:
-                                        state.listCoins![index].current_price ??
+                            return RefreshIndicator(
+                                onRefresh: () async {
+                                  context.read<CoinsBloc>().add(GetListCoins(
+                                      currency: 'usd', sparkline: true));
+                                },
+                                child: ListView.builder(
+                                  itemCount: state.listCoins!.length,
+                                  itemBuilder:
+                                      (BuildContext context, int index) {
+                                    return Padding(
+                                      padding: coinCardPadding,
+                                      child: CoinCard(
+                                        image: state.listCoins![index].image,
+                                        name: state.listCoins![index].name,
+                                        symbol: state.listCoins![index].symbol,
+                                        price: state.listCoins![index]
+                                                .current_price ??
                                             0,
-                                    price_change: state.listCoins![index]
-                                            .price_change_24h ??
-                                        0,
-                                    onTap: () => {
-                                      Navigator.pushNamed(
-                                          context, RouteConstant.detailRoute,
-                                          arguments: state.listCoins![index])
-                                    },
-                                  ),
-                                );
-                              },
-                            );
+                                        price_change: state.listCoins![index]
+                                                .price_change_24h ??
+                                            0,
+                                        onTap: () => {
+                                          Navigator.pushNamed(context,
+                                              RouteConstant.detailRoute,
+                                              arguments:
+                                                  state.listCoins![index])
+                                        },
+                                      ),
+                                    );
+                                  },
+                                ));
                           }
                           if (state is CoinsLoadInProgress) {
                             return Center(

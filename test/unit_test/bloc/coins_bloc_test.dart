@@ -6,7 +6,7 @@ import 'package:crypto_mobile_application/src/services/coin_service.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mockito/mockito.dart';
 
-class MockCoinService extends Mock implements CoinService {}
+import '../../mock_data/coin_service_mock.dart';
 
 void main() {
   CoinService coinsService;
@@ -39,7 +39,7 @@ void main() {
     },
     act: (CoinsBloc bloc) =>
         bloc.add(GetListCoins(currency: null, sparkline: null)),
-    expect: () => [CoinsLoadInProgress(), CoinsLoadFailure()],
+    expect: () =>  [CoinsLoadInProgress(), CoinsLoadFailure()],
   );
 
   blocTest(

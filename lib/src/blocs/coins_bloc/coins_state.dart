@@ -21,6 +21,4 @@ class CoinsLoadSuccess extends CoinsState {
 class CoinsLoadFailure extends CoinsState {
   String? error;
   CoinsLoadFailure({this.error});
-  @override
-  List<Object?> get props => [error];
 }

@@ -17,7 +17,6 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:mocktail/mocktail.dart';
 
 import '../../mock_data/coins_mock_data.dart';
-import '../../mock_data/navigator_mock.dart';
 
 class MockCoinBloc extends MockBloc<CoinsEvent, CoinsState>
     implements CoinsBloc {}
@@ -41,7 +40,7 @@ main() {
   String emptyList = 'Coin List is empty';
   final listName = 'Coins';
   final mockResponse = json.decode(mockCoinsData);
-
+  final mockObserver = MockNavigatorObserver();
   setUpAll(() {
     registerFallbackValue(FakeCoinState());
     registerFallbackValue(FakeCoinEvent());
@@ -53,7 +52,7 @@ main() {
     late CoinsBloc coinsBloc;
     late CoinsEvent coinsEvent;
     late AppRoute route;
-    final mockObserver = MockNavigatorObserver();
+
     var widget = MaterialApp(
       onGenerateRoute: AppRoute.generateRoute,
       initialRoute: RouteConstant.welcomeRoute,

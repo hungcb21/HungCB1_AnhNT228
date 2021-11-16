@@ -30,6 +30,7 @@ class FakeCoinEvent extends Fake implements CoinsEvent {}
 class MyTypeFake extends Fake implements Route {}
 
 class MockNavigatorObserver extends Mock implements NavigatorObserver {}
+
 class CustomBindings extends AutomatedTestWidgetsFlutterBinding {
   @override
   bool get overrideHttpClient => false;
@@ -65,7 +66,6 @@ main() {
         child: HomeScreen(),
       ),
       navigatorObservers: [mockObserver],
-      // onGenerateRoute: AppRoute.generateRoute,
     );
 
     setUp(() {
@@ -78,29 +78,28 @@ main() {
       coinsBloc.close();
     });
 
-    testWidgets('Should navigator CoinCart when tap in Coin Card',
-            (tester) async {
-          when(() => coinsBloc.state).thenReturn(CoinsLoadSuccess(
-            listCoins:
+    testWidgets('Should navigator when tap on the Coin Card', (tester) async {
+      when(() => coinsBloc.state).thenReturn(CoinsLoadSuccess(
+        listCoins:
             List<Coins>.from(mockResponse.map((model) => Coins.fromJson(model)))
                 .toList(),
-          ));
-          await tester.pumpWidget(widget);
-          await tester.pumpAndSettle();
-          final coinCardFinder = find.descendant(
-              of: find.byType(ListView), matching: find.byType(CoinCard).first);
-          await tester.tap(coinCardFinder);
-          await tester.pumpAndSettle();
-          verify(() => mockObserver.didPush(any(), any())).called(2);
-        });
+      ));
+      await tester.pumpWidget(widget);
+      await tester.pumpAndSettle();
+      final coinCardFinder = find.descendant(
+          of: find.byType(ListView), matching: find.byType(CoinCard).first);
+      await tester.tap(coinCardFinder);
+      await tester.pumpAndSettle();
+      verify(() => mockObserver.didPush(any(), any())).called(2);
+    });
 
-
-    testWidgets('Should refresh list coin when scroll', (tester) async {
+    testWidgets('Should refresh coin list  when scroll down the coin list',
+        (tester) async {
       bool refreshCalled = false;
       when(() => coinsBloc.state).thenReturn(CoinsLoadSuccess(
         listCoins:
-        List<Coins>.from(mockResponse.map((model) => Coins.fromJson(model)))
-            .toList(),
+            List<Coins>.from(mockResponse.map((model) => Coins.fromJson(model)))
+                .toList(),
       ));
       await tester.pumpWidget(widget);
       await tester.pumpAndSettle();
@@ -114,107 +113,108 @@ main() {
       expect(refreshCalled, false);
     });
 
-    testWidgets('Should refresh list coin', (tester) async {
-      final errorMessage = 'Exception: Failed to load coins list';
+    testWidgets(
+        'Should refresh coin list when tap on the refresh button at the coin bloc state is [CoinsLoadFailure]',
+        (tester) async {
+      final errorMessage = 'Exception: Failed to load coin list';
       when(() => coinsBloc.state)
           .thenReturn(CoinsLoadFailure(error: errorMessage));
       await tester.pumpWidget(widget);
       await tester.pump();
-      final errorMessageFinder = find.byType(FloatingActionButton);
-      expect(errorMessageFinder, findsOneWidget);
-      await tester.tap(errorMessageFinder);
+      final refreshButtonFinder = find.byType(FloatingActionButton);
+      expect(refreshButtonFinder, findsOneWidget);
+      await tester.tap(refreshButtonFinder);
     });
 
     testWidgets(
-        'Should render progress indicator when coin bloc state is [ListCoinsLoading]',
-            (tester) async {
-          when(() => coinsBloc.state).thenReturn(CoinsLoadInProgress());
-          await tester.pumpWidget(widget);
-          await tester.pump();
+        'Should render progress indicator when coin bloc state is [CoinsLoadInProgress]',
+        (tester) async {
+      when(() => coinsBloc.state).thenReturn(CoinsLoadInProgress());
+      await tester.pumpWidget(widget);
+      await tester.pump();
 
-          final indicatorFinder = find.byType(CircularProgressIndicator);
-          expect(indicatorFinder, findsOneWidget);
-        });
-
-    testWidgets(
-        'Should render list empty  when coin bloc state is []',
-            (tester) async {
-          when(() => coinsBloc.state).thenReturn(CoinsInitial());
-          await tester.pumpWidget(widget);
-          await tester.pump();
-          expect(find.text(emptyList), findsOneWidget);
-        });
+      final progressIndicatorFinder = find.byType(CircularProgressIndicator);
+      expect(progressIndicatorFinder, findsOneWidget);
+    });
 
     testWidgets(
-        'Should render error text with error message when coin bloc state is [ListCoinsLoadFail]',
-            (tester) async {
-          final errorMessage = 'Exception: Failed to load coins list';
-          when(() => coinsBloc.state)
-              .thenReturn(CoinsLoadFailure(error: errorMessage));
-          await tester.pumpWidget(widget);
-          await tester.pump();
-          final errorMessageFinder = find.text(errorMessage);
-          expect(errorMessageFinder, findsOneWidget);
-        });
+        'Should render  empty list  when coin bloc state is [CoinsInitial]',
+        (tester) async {
+      when(() => coinsBloc.state).thenReturn(CoinsInitial());
+      await tester.pumpWidget(widget);
+      await tester.pump();
+      expect(find.text(emptyList), findsOneWidget);
+    });
 
     testWidgets(
-        'Should render CoinCart list when bloc state is [ListCoinsLoaded]',
-            (tester) async {
-          when(() => coinsBloc.state).thenReturn(CoinsLoadSuccess(
-            listCoins:
+        'Should render error message when coin bloc state is [CoinsLoadFailure]',
+        (tester) async {
+      final errorMessage = 'Exception: Failed to load coin list';
+      when(() => coinsBloc.state)
+          .thenReturn(CoinsLoadFailure(error: errorMessage));
+      await tester.pumpWidget(widget);
+      await tester.pump();
+      final errorMessageFinder = find.text(errorMessage);
+      expect(errorMessageFinder, findsOneWidget);
+    });
+
+    testWidgets(
+        'Should render the Coin list when bloc state is [CoinsLoadSuccess]',
+        (tester) async {
+      when(() => coinsBloc.state).thenReturn(CoinsLoadSuccess(
+        listCoins:
             List<Coins>.from(mockResponse.map((model) => Coins.fromJson(model)))
                 .toList(),
-          ));
-          await tester.pumpWidget(widget);
-          await tester.pumpAndSettle();
-          final coinCardFinder = find.descendant(
-              of: find.byType(ListView), matching: find.byType(CoinCard));
-          expect(coinCardFinder, findsNWidgets(2));
-        });
+      ));
+      await tester.pumpWidget(widget);
+      await tester.pumpAndSettle();
+      final coinCardFinder = find.descendant(
+          of: find.byType(ListView), matching: find.byType(CoinCard));
+      expect(coinCardFinder, findsNWidgets(2));
+    });
 
     testWidgets(
-        'Should render SearchBar  when bloc state is [ListCoinsLoaded]',
-            (tester) async {
-          when(() => coinsBloc.state).thenReturn(CoinsLoadSuccess(
-            listCoins:
+        'Should render Search bar  when bloc state is [CoinsLoadSuccess]',
+        (tester) async {
+      when(() => coinsBloc.state).thenReturn(CoinsLoadSuccess(
+        listCoins:
             List<Coins>.from(mockResponse.map((model) => Coins.fromJson(model)))
                 .toList(),
-          ));
-          await tester.pumpWidget(widget);
-          await tester.pumpAndSettle();
-          expect(find.byType(SearchBar), findsOneWidget);
-        });
-    testWidgets(
-        'Should render CoinCart list when bloc state is [ListCoinsLoaded]',
-            (tester) async {
-          when(() => coinsBloc.state).thenReturn(CoinsLoadSuccess(
-            listCoins:
+      ));
+      await tester.pumpWidget(widget);
+      await tester.pumpAndSettle();
+      expect(find.byType(SearchBar), findsOneWidget);
+    });
+    testWidgets('Should render Coin list when bloc state is [CoinsLoadSuccess]',
+        (tester) async {
+      when(() => coinsBloc.state).thenReturn(CoinsLoadSuccess(
+        listCoins:
             List<Coins>.from(mockResponse.map((model) => Coins.fromJson(model)))
                 .toList(),
-          ));
-          await tester.pumpWidget(widget);
-          await tester.pumpAndSettle();
-          expect(find.text(listName), findsOneWidget);
-        });
+      ));
+      await tester.pumpWidget(widget);
+      await tester.pumpAndSettle();
+      expect(find.text(listName), findsOneWidget);
+    });
 
-    testWidgets('Should search Coin when bloc state is [ListCoinsLoaded]',
-            (tester) async {
-          when(() => coinsBloc.state).thenReturn(CoinsLoadSuccess(
-            listCoins:
+    testWidgets('Should search Coin when bloc state is [CoinsLoadSuccess]',
+        (tester) async {
+      when(() => coinsBloc.state).thenReturn(CoinsLoadSuccess(
+        listCoins:
             List<Coins>.from(mockResponse.map((model) => Coins.fromJson(model)))
                 .toList(),
-          ));
-          await tester.pumpWidget(widget);
-          await tester.pumpAndSettle();
-          await tester.tap(find.byType(SearchBar));
-          await tester.enterText(find.byType(SearchBar), 'bit');
-          await tester.pump(const Duration(seconds: 1));
-          final coinCardFinder = find.descendant(
-              of: find.byType(ListView), matching: find.byType(Card).first);
-          expect(coinCardFinder, findsOneWidget);
-          await tester.tap(coinCardFinder);
-          await tester.pumpAndSettle();
-          verify(() => mockObserver.didPush(any(), any())).called(10);
-        });
+      ));
+      await tester.pumpWidget(widget);
+      await tester.pumpAndSettle();
+      await tester.tap(find.byType(SearchBar));
+      await tester.enterText(find.byType(SearchBar), 'bit');
+      await tester.pump(const Duration(seconds: 1));
+      final coinCardFinder = find.descendant(
+          of: find.byType(ListView), matching: find.byType(Card).first);
+      expect(coinCardFinder, findsOneWidget);
+      await tester.tap(coinCardFinder);
+      await tester.pumpAndSettle();
+      verify(() => mockObserver.didPush(any(), any())).called(10);
+    });
   });
 }

@@ -38,7 +38,7 @@ class CustomBindings extends AutomatedTestWidgetsFlutterBinding {
 
 main() {
   CustomBindings();
-  String emptyList = 'Coin List is empty';
+  String emptyList = 'Coin list is empty';
   final listName = 'Coins';
   final mockResponse = json.decode(mockCoinsData);
   final mockObserver = MockNavigatorObserver();

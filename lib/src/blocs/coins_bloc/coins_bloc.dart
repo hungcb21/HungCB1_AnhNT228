@@ -18,7 +18,7 @@ class CoinsBloc extends Bloc<CoinsEvent, CoinsState> {
             sparkline: event.sparkLine!);
         emit(CoinsLoadSuccess(listCoins: coins));
       } catch (e) {
-        emit(CoinsLoadFailure(error: e.toString()));
+        emit(CoinsLoadFailure(error: StringData.errorListMessage));
       }
     });
   }

@@ -9,7 +9,7 @@ import 'package:mockito/mockito.dart';
 import '../../mock_data/coin_service_mock.dart';
 
 void main() {
-  String error = 'Null check operator used on a null value';
+  String error = 'Failed to load coin list';
   CoinService coinsService;
   CoinsBloc? coinsBloc;
   setUp(() {

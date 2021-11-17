@@ -17,6 +17,7 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:mocktail/mocktail.dart';
 
 import '../../mock_data/coins_mock_data.dart';
+import '../../mock_data/route_mock.dart';
 
 class MockCoinBloc extends MockBloc<CoinsEvent, CoinsState>
     implements CoinsBloc {}
@@ -27,7 +28,7 @@ class FakeCoinState extends Fake implements CoinsState {}
 
 class FakeCoinEvent extends Fake implements CoinsEvent {}
 
-class MyTypeFake extends Fake implements Route {}
+
 
 class MockNavigatorObserver extends Mock implements NavigatorObserver {}
 
@@ -46,7 +47,7 @@ main() {
   setUpAll(() {
     registerFallbackValue(FakeCoinState());
     registerFallbackValue(FakeCoinEvent());
-    registerFallbackValue(MyTypeFake());
+    registerFallbackValue(RouteFake());
   });
 
   group('Home Screen Tests', () {

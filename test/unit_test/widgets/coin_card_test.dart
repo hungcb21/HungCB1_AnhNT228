@@ -19,7 +19,7 @@ main() {
         home: Scaffold(
           body: CoinCard(
             symbol: symbol,
-            price_change: priceChange,
+            priceChange: priceChange,
             price: price,
             name: name,
             image: image,

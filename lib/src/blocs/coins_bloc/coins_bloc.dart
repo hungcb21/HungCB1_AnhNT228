@@ -1,4 +1,3 @@
-import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../constants/string_data.dart';
@@ -9,7 +8,7 @@ import 'coins_state.dart';
 class CoinsBloc extends Bloc<CoinsEvent, CoinsState> {
   CoinService service;
   CoinsBloc({required this.service}) : super(CoinsInitial()) {
-    on<CoinListRequest>((event, emit) async {
+    on<CoinListRequested>((event, emit) async {
       try {
         emit(CoinsLoadInProgress());
         final coins = await service.getCoinsFromAPI(

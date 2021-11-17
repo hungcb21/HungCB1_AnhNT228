@@ -79,8 +79,9 @@ class _HomeScreenState extends State<HomeScreen> {
                             if (state is CoinsLoadSuccess) {
                               return RefreshIndicator(
                                 onRefresh: () async {
-                                  context.read<CoinsBloc>().add(CoinListRequest(
-                                      currency: 'usd', sparkline: true));
+                                  context.read<CoinsBloc>().add(
+                                      CoinListRequested(
+                                          currency: 'usd', sparkline: true));
                                 },
                                 child: ListView.builder(
                                   itemCount: state.listCoins!.length,
@@ -93,10 +94,10 @@ class _HomeScreenState extends State<HomeScreen> {
                                         name: state.listCoins![index].name,
                                         symbol: state.listCoins![index].symbol,
                                         price: state.listCoins![index]
-                                                .current_price ??
+                                                .currentPrice ??
                                             0,
-                                        price_change: state.listCoins![index]
-                                                .price_change_24h ??
+                                        priceChange: state.listCoins![index]
+                                                .priceChange_24h ??
                                             0,
                                         onTap: () => {
                                           Navigator.pushNamed(context,
@@ -131,7 +132,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                   FloatingActionButton(
                                     onPressed: () async {
                                       context.read<CoinsBloc>().add(
-                                          CoinListRequest(
+                                          CoinListRequested(
                                               currency: 'usd',
                                               sparkline: true));
                                     },

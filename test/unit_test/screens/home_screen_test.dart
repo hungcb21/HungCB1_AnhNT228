@@ -28,8 +28,6 @@ class FakeCoinState extends Fake implements CoinsState {}
 
 class FakeCoinEvent extends Fake implements CoinsEvent {}
 
-
-
 class MockNavigatorObserver extends Mock implements NavigatorObserver {}
 
 class CustomBindings extends AutomatedTestWidgetsFlutterBinding {

@@ -8,7 +8,7 @@ class CoinCard extends StatelessWidget {
   String name;
   String symbol;
   num price;
-  num price_change;
+  num priceChange;
 
   CoinCard(
       {required this.image,
@@ -16,7 +16,7 @@ class CoinCard extends StatelessWidget {
       required this.name,
       required this.symbol,
       required this.price,
-      required this.price_change});
+      required this.priceChange});
 
   @override
   Widget build(BuildContext context) {
@@ -50,9 +50,9 @@ class CoinCard extends StatelessWidget {
           subtitle: Text(
               '${double.parse(price.toString()).toStringAsFixed(3)}  ${symbol.toUpperCase()}'),
           trailing: Text(
-            double.parse(price_change.toString()).toStringAsFixed(3),
+            double.parse(priceChange.toString()).toStringAsFixed(3),
             style: TextStyle(
-                color: price_change.toString().contains('-')
+                color: priceChange.toString().contains('-')
                     ? Colors.red
                     : Colors.green),
           ),

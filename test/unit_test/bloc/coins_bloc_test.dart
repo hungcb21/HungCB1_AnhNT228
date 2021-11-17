@@ -9,6 +9,7 @@ import 'package:mockito/mockito.dart';
 import '../../mock_data/coin_service_mock.dart';
 
 void main() {
+  String error = 'Null check operator used on a null value';
   CoinService coinsService;
   CoinsBloc? coinsBloc;
   setUp(() {
@@ -27,7 +28,7 @@ void main() {
       return CoinsBloc(service: coinsService);
     },
     act: (CoinsBloc bloc) =>
-        bloc.add(CoinListRequest(currency: 'usd', sparkline: true)),
+        bloc.add(CoinListRequested(currency: 'usd', sparkline: true)),
     expect: () => [CoinsLoadInProgress(), CoinsLoadSuccess()],
   );
 
@@ -37,9 +38,8 @@ void main() {
       coinsService = MockCoinService();
       return CoinsBloc(service: coinsService);
     },
-    act: (CoinsBloc bloc) =>
-        bloc.add(CoinListRequest(currency: null, sparkline: null)),
-    expect: () => [CoinsLoadInProgress(), CoinsLoadFailure()],
+    act: (CoinsBloc bloc) => bloc.add(CoinListRequested()),
+    expect: () => [CoinsLoadInProgress(), CoinsLoadFailure(error: error)],
   );
 
   blocTest(
@@ -51,10 +51,7 @@ void main() {
           .thenThrow(Exception());
       return CoinsBloc(service: coinsService);
     },
-    act: (CoinsBloc bloc) => bloc.add(CoinListRequest()),
-    expect: () => [
-      CoinsLoadInProgress(),
-      CoinsLoadFailure(error: Exception().toString())
-    ],
+    act: (CoinsBloc bloc) => bloc.add(CoinListRequested()),
+    expect: () => [CoinsLoadInProgress(), CoinsLoadFailure(error: error)],
   );
 }

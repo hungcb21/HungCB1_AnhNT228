@@ -20,7 +20,7 @@ class MyApp extends StatelessWidget {
       home: MultiBlocProvider(providers: [
         BlocProvider(
           create: (context) => CoinsBloc(service: AppCoinService(httpClient))
-            ..add(CoinListRequest(currency: 'usd', sparkline: true)),
+            ..add(CoinListRequested(currency: 'usd', sparkline: true)),
         ),
       ], child: HomeScreen()),
     );

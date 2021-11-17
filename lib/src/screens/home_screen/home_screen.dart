@@ -27,116 +27,130 @@ class _HomeScreenState extends State<HomeScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: ColorsApp.backgroundColor,
-      body: SafeArea(
-        child: Column(
-          children: [
-            Container(
-              height: heightOfTopContainer,
-              padding: searchBarPadding,
-              child: Column(
-                children: [
-                  BlocBuilder<CoinsBloc, CoinsState>(builder: (context, state) {
-                    if (state is CoinsLoadSuccess) {
-                      return SearchBar(state.listCoins!);
-                    }
-                    return SearchBar([]);
-                  }),
-                ],
-              ),
-            ),
-            Expanded(
-              flex: 4,
-              child: Container(
-                padding: coinListPadding,
-                decoration: BoxDecoration(
-                    color: ColorsApp.backgroundBottomColor,
-                    borderRadius: coinlistBorderRadius),
+    return GestureDetector(
+      onTap: () {
+        FocusScopeNode currentFocus = FocusScope.of(context);
+        if (!currentFocus.hasPrimaryFocus &&
+            currentFocus.focusedChild != null) {
+          FocusManager.instance.primaryFocus?.unfocus();
+        }
+      },
+      child: Scaffold(
+        backgroundColor: ColorsApp.backgroundColor,
+        body: SafeArea(
+          child: Column(
+            children: [
+              Container(
+                height: heightOfTopContainer,
+                padding: searchBarPadding,
                 child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Padding(
-                      padding: coinTitlePadding,
-                      child: Text(StringData.listCoinsTitle,
-                          style: Theme.of(context)
-                              .textTheme
-                              .headline5!
-                              .copyWith(fontWeight: AppFontWeight.extraBold)),
-                    ),
-                    Flexible(
-                      child: BlocBuilder<CoinsBloc, CoinsState>(
-                        builder: (BuildContext context, state) {
-                          if (state is CoinsLoadSuccess) {
-                            return RefreshIndicator(
-                              onRefresh: () async {
-                                context.read<CoinsBloc>().add(CoinListRequest(
-                                    currency: 'usd', sparkline: true));
-                              },
-                              child: ListView.builder(
-                                itemCount: state.listCoins!.length,
-                                itemBuilder: (BuildContext context, int index) {
-                                  return Padding(
-                                    padding: coinCardPadding,
-                                    child: CoinCard(
-                                      image: state.listCoins![index].image,
-                                      name: state.listCoins![index].name,
-                                      symbol: state.listCoins![index].symbol,
-                                      price: state.listCoins![index]
-                                              .current_price ??
-                                          0,
-                                      price_change: state.listCoins![index]
-                                              .price_change_24h ??
-                                          0,
-                                      onTap: () => {
-                                        Navigator.pushNamed(
-                                            context, RouteConstant.detailRoute,
-                                            arguments: state.listCoins![index])
-                                      },
-                                    ),
-                                  );
-                                },
-                              ),
-                            );
-                          }
-                          if (state is CoinsLoadInProgress) {
-                            return Center(
-                              child: CircularProgressIndicator(),
-                            );
-                          }
-                          if (state is CoinsLoadFailure) {
-                            return Column(
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              crossAxisAlignment: CrossAxisAlignment.stretch,
-                              children: [
-                                Text(state.error!,
-                                    style: Theme.of(context)
-                                        .textTheme
-                                        .headline5!
-                                        .copyWith(
-                                            fontWeight: AppFontWeight.extraBold,
-                                            color: Colors.red)),
-                                FloatingActionButton(
-                                  onPressed: () async {
-                                    context.read<CoinsBloc>().add(
-                                        CoinListRequest(
-                                            currency: 'usd', sparkline: true));
-                                  },
-                                  child: new Icon(Icons.refresh),
-                                  backgroundColor: Colors.red,
-                                ),
-                              ],
-                            );
-                          }
-                          return Center(child: Text(StringData.emptyList));
-                        },
-                      ),
-                    ),
+                    BlocBuilder<CoinsBloc, CoinsState>(
+                        builder: (context, state) {
+                      if (state is CoinsLoadSuccess) {
+                        return SearchBar(state.listCoins!);
+                      }
+                      return SearchBar([]);
+                    }),
                   ],
                 ),
               ),
-            ),
-          ],
+              Expanded(
+                flex: 4,
+                child: Container(
+                  padding: coinListPadding,
+                  decoration: BoxDecoration(
+                      color: ColorsApp.backgroundBottomColor,
+                      borderRadius: coinlistBorderRadius),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Padding(
+                        padding: coinTitlePadding,
+                        child: Text(StringData.listCoinsTitle,
+                            style: Theme.of(context)
+                                .textTheme
+                                .headline5!
+                                .copyWith(fontWeight: AppFontWeight.extraBold)),
+                      ),
+                      Flexible(
+                        child: BlocBuilder<CoinsBloc, CoinsState>(
+                          builder: (BuildContext context, state) {
+                            if (state is CoinsLoadSuccess) {
+                              return RefreshIndicator(
+                                onRefresh: () async {
+                                  context.read<CoinsBloc>().add(CoinListRequest(
+                                      currency: 'usd', sparkline: true));
+                                },
+                                child: ListView.builder(
+                                  itemCount: state.listCoins!.length,
+                                  itemBuilder:
+                                      (BuildContext context, int index) {
+                                    return Padding(
+                                      padding: coinCardPadding,
+                                      child: CoinCard(
+                                        image: state.listCoins![index].image,
+                                        name: state.listCoins![index].name,
+                                        symbol: state.listCoins![index].symbol,
+                                        price: state.listCoins![index]
+                                                .current_price ??
+                                            0,
+                                        price_change: state.listCoins![index]
+                                                .price_change_24h ??
+                                            0,
+                                        onTap: () => {
+                                          Navigator.pushNamed(context,
+                                              RouteConstant.detailRoute,
+                                              arguments:
+                                                  state.listCoins![index])
+                                        },
+                                      ),
+                                    );
+                                  },
+                                ),
+                              );
+                            }
+                            if (state is CoinsLoadInProgress) {
+                              return Center(
+                                child: CircularProgressIndicator(),
+                              );
+                            }
+                            if (state is CoinsLoadFailure) {
+                              return Column(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                crossAxisAlignment: CrossAxisAlignment.stretch,
+                                children: [
+                                  Text(state.error!,
+                                      style: Theme.of(context)
+                                          .textTheme
+                                          .headline5!
+                                          .copyWith(
+                                              fontWeight:
+                                                  AppFontWeight.extraBold,
+                                              color: Colors.red)),
+                                  FloatingActionButton(
+                                    onPressed: () async {
+                                      context.read<CoinsBloc>().add(
+                                          CoinListRequest(
+                                              currency: 'usd',
+                                              sparkline: true));
+                                    },
+                                    child: new Icon(Icons.refresh),
+                                    backgroundColor: Colors.red,
+                                  ),
+                                ],
+                              );
+                            }
+                            return Center(child: Text(StringData.emptyList));
+                          },
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+              ),
+            ],
+          ),
         ),
       ),
     );

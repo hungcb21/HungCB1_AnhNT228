@@ -9,7 +9,7 @@ main() {
   String name = 'bitcoin';
   String symbol = 'btc';
   var price = 12345;
-  var price_change = 324234;
+  var priceChange = 324234;
 
   testWidgets('Coin card should be tapped', (WidgetTester tester) async {
     final mockObserver = MockNavigatorObserver();
@@ -19,7 +19,7 @@ main() {
         home: Scaffold(
           body: CoinCard(
             symbol: symbol,
-            price_change: price_change,
+            price_change: priceChange,
             price: price,
             name: name,
             image: image,

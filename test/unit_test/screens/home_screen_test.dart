@@ -42,6 +42,7 @@ main() {
   final listName = 'Coins';
   final mockResponse = json.decode(mockCoinsData);
   final mockObserver = MockNavigatorObserver();
+
   setUpAll(() {
     registerFallbackValue(FakeCoinState());
     registerFallbackValue(FakeCoinEvent());

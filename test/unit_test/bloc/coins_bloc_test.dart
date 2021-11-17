@@ -27,7 +27,7 @@ void main() {
       return CoinsBloc(service: coinsService);
     },
     act: (CoinsBloc bloc) =>
-        bloc.add(GetListCoins(currency: 'usd', sparkline: true)),
+        bloc.add(CoinListRequest(currency: 'usd', sparkline: true)),
     expect: () => [CoinsLoadInProgress(), CoinsLoadSuccess()],
   );
 
@@ -38,8 +38,8 @@ void main() {
       return CoinsBloc(service: coinsService);
     },
     act: (CoinsBloc bloc) =>
-        bloc.add(GetListCoins(currency: null, sparkline: null)),
-    expect: () =>  [CoinsLoadInProgress(), CoinsLoadFailure()],
+        bloc.add(CoinListRequest(currency: null, sparkline: null)),
+    expect: () => [CoinsLoadInProgress(), CoinsLoadFailure()],
   );
 
   blocTest(
@@ -51,7 +51,7 @@ void main() {
           .thenThrow(Exception());
       return CoinsBloc(service: coinsService);
     },
-    act: (CoinsBloc bloc) => bloc.add(GetListCoins()),
+    act: (CoinsBloc bloc) => bloc.add(CoinListRequest()),
     expect: () => [
       CoinsLoadInProgress(),
       CoinsLoadFailure(error: Exception().toString())

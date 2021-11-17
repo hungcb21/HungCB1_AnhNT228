@@ -8,22 +8,19 @@ import 'coins_state.dart';
 
 class CoinsBloc extends Bloc<CoinsEvent, CoinsState> {
   CoinService service;
-  CoinsBloc({required this.service}) : super(CoinsInitial());
-
-  @override
-  Stream<CoinsState> mapEventToState(CoinsEvent event) async* {
-    if (event is GetListCoins) {
+  CoinsBloc({required this.service}) : super(CoinsInitial()) {
+    on<CoinListRequest>((event, emit) async {
       try {
-        yield CoinsLoadInProgress();
+        emit(CoinsLoadInProgress());
         final coins = await service.getCoinsFromAPI(
             currency: event.currency!,
             start: 1,
             limit: StringData.NUMBER_OF_COIN_PER_STATE,
             sparkline: event.sparkline!);
-        yield CoinsLoadSuccess(listCoins: coins);
+        emit(CoinsLoadSuccess(listCoins: coins));
       } catch (e) {
-        yield CoinsLoadFailure(error: e.toString());
+        emit(CoinsLoadFailure(error: e.toString()));
       }
-    }
+    });
   }
 }

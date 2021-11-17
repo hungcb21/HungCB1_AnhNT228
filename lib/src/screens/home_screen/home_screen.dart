@@ -69,14 +69,13 @@ class _HomeScreenState extends State<HomeScreen> {
                         builder: (BuildContext context, state) {
                           if (state is CoinsLoadSuccess) {
                             return RefreshIndicator(
-                              onRefresh:() async {
-                                context.read<CoinsBloc>().add(GetListCoins(
+                              onRefresh: () async {
+                                context.read<CoinsBloc>().add(CoinListRequest(
                                     currency: 'usd', sparkline: true));
-                              } ,
+                              },
                               child: ListView.builder(
                                 itemCount: state.listCoins!.length,
-                                itemBuilder:
-                                    (BuildContext context, int index) {
+                                itemBuilder: (BuildContext context, int index) {
                                   return Padding(
                                     padding: coinCardPadding,
                                     child: CoinCard(
@@ -90,10 +89,9 @@ class _HomeScreenState extends State<HomeScreen> {
                                               .price_change_24h ??
                                           0,
                                       onTap: () => {
-                                        Navigator.pushNamed(context,
-                                            RouteConstant.detailRoute,
-                                            arguments:
-                                                state.listCoins![index])
+                                        Navigator.pushNamed(
+                                            context, RouteConstant.detailRoute,
+                                            arguments: state.listCoins![index])
                                       },
                                     ),
                                   );
@@ -119,10 +117,11 @@ class _HomeScreenState extends State<HomeScreen> {
                                             fontWeight: AppFontWeight.extraBold,
                                             color: Colors.red)),
                                 FloatingActionButton(
-                                  onPressed:() async {
-                                    context.read<CoinsBloc>().add(GetListCoins(
-                                        currency: 'usd', sparkline: true));
-                                  } ,
+                                  onPressed: () async {
+                                    context.read<CoinsBloc>().add(
+                                        CoinListRequest(
+                                            currency: 'usd', sparkline: true));
+                                  },
                                   child: new Icon(Icons.refresh),
                                   backgroundColor: Colors.red,
                                 ),

@@ -15,7 +15,7 @@ class CoinsBloc extends Bloc<CoinsEvent, CoinsState> {
             currency: event.currency!,
             start: 1,
             limit: StringData.NUMBER_OF_COIN_PER_STATE,
-            sparkline: event.sparkline!);
+            sparkline: event.sparkLine!);
         emit(CoinsLoadSuccess(listCoins: coins));
       } catch (e) {
         emit(CoinsLoadFailure(error: e.toString()));

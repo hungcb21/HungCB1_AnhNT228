@@ -28,7 +28,7 @@ void main() {
       return CoinsBloc(service: coinsService);
     },
     act: (CoinsBloc bloc) =>
-        bloc.add(CoinListRequested(currency: 'usd', sparkline: true)),
+        bloc.add(CoinListRequested(currency: 'usd', sparkLine: true)),
     expect: () => [CoinsLoadInProgress(), CoinsLoadSuccess()],
   );
 

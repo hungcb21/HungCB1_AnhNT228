@@ -81,7 +81,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                 onRefresh: () async {
                                   context.read<CoinsBloc>().add(
                                       CoinListRequested(
-                                          currency: 'usd', sparkline: true));
+                                          currency: 'usd', sparkLine: true));
                                 },
                                 child: ListView.builder(
                                   itemCount: state.listCoins!.length,
@@ -134,7 +134,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                       context.read<CoinsBloc>().add(
                                           CoinListRequested(
                                               currency: 'usd',
-                                              sparkline: true));
+                                              sparkLine: true));
                                     },
                                     child: new Icon(Icons.refresh),
                                     backgroundColor: Colors.red,

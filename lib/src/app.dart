@@ -3,7 +3,6 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:http/http.dart' as http;
 
 import 'blocs/coins_bloc/coins_bloc.dart';
-import 'blocs/coins_bloc/coins_event.dart';
 import 'constants/routes.dart';
 import 'routes/app_route.dart';
 import 'screens/home_screen/home_screen.dart';
@@ -19,9 +18,8 @@ class MyApp extends StatelessWidget {
       initialRoute: RouteConstant.welcomeRoute,
       home: MultiBlocProvider(providers: [
         BlocProvider(
-          create: (context) => CoinsBloc(service: AppCoinService(httpClient))
-            ..add(CoinListRequested(currency: 'usd', sparkLine: true)),
-        ),
+            create: (context) =>
+                CoinsBloc(service: AppCoinService(httpClient))),
       ], child: HomeScreen()),
     );
   }

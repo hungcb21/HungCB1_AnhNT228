@@ -6,10 +6,8 @@ import 'package:crypto_mobile_application/src/services/coin_service.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mockito/mockito.dart';
 
-import '../../mock_data/coin_service_mock.dart';
-
+class MockCoinService extends Mock implements CoinService {}
 void main() {
-  String error = 'Failed to load coin list';
   CoinService coinsService;
   CoinsBloc? coinsBloc;
   setUp(() {
@@ -32,7 +30,6 @@ void main() {
     expect: () => [CoinsLoadInProgress(), CoinsLoadSuccess()],
   );
 
-
   blocTest(
     'emits [CoinsLoadFailure] when [GetListCoins] is called and service throws error.',
     build: () {
@@ -42,7 +39,11 @@ void main() {
           .thenThrow(Exception());
       return CoinsBloc(service: coinsService);
     },
-    act: (CoinsBloc bloc) => bloc.add(CoinListRequested(currency: 'usd',sparkLine: true)),
-    expect: () => [CoinsLoadInProgress(), CoinsLoadFailure(error: Exception().toString())],
+    act: (CoinsBloc bloc) =>
+        bloc.add(CoinListRequested(currency: 'usd', sparkLine: true)),
+    expect: () => [
+      CoinsLoadInProgress(),
+      CoinsLoadFailure(error: Exception().toString())
+    ],
   );
 }

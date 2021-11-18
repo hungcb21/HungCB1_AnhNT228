@@ -1,11 +1,12 @@
-import '../constants/routes.dart';
 import 'package:flutter/material.dart';
 
+import '../constants/routes.dart';
 import '../constants/string_data.dart';
 import '../models/coins.dart';
 
 class SearchBar extends StatefulWidget {
   List<Coins> coinslist;
+
   SearchBar(this.coinslist);
 
   @override
@@ -41,6 +42,13 @@ class _SearchBarState extends State<SearchBar> {
                   FocusNode fieldFocusNode,
                   VoidCallback onFieldSubmitted) {
                 return TextField(
+                  onTap: () {
+                    FocusScopeNode currentFocus = FocusScope.of(context);
+                    if (!currentFocus.hasPrimaryFocus &&
+                        currentFocus.focusedChild != null) {
+                      currentFocus.focusedChild!.unfocus();
+                    }
+                  },
                   decoration: InputDecoration(
                       border: InputBorder.none,
                       hintText: StringData.hintTextSearch),

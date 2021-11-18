@@ -12,10 +12,10 @@ class CoinsBloc extends Bloc<CoinsEvent, CoinsState> {
       try {
         emit(CoinsLoadInProgress());
         final coins = await service.getCoinsFromAPI(
-            currency: event.currency!,
+            currency: event.currency,
             start: 1,
             limit: StringData.NUMBER_OF_COIN_PER_STATE,
-            sparkline: event.sparkLine!);
+            sparkline: event.sparkLine);
         emit(CoinsLoadSuccess(listCoins: coins));
       } catch (e) {
         emit(CoinsLoadFailure(error: e.toString()));

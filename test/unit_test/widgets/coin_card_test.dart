@@ -1,9 +1,9 @@
 import 'package:crypto_mobile_application/src/widgets/coin_card.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
+import 'package:mockito/mockito.dart';
 
-import '../../mock_data/navigator_mock.dart';
-
+class MockNavigatorObserver extends Mock implements NavigatorObserver {}
 main() {
   String image = '';
   String name = 'bitcoin';

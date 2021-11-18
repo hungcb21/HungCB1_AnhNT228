@@ -40,7 +40,7 @@ class CoinCard extends StatelessWidget {
         ),
         child: ListTile(
           leading: Image.network(
-            image ?? StringData.constImage,
+            image! ,
             errorBuilder: (context, error, strackTrace) => Icon(Icons.error),
           ),
           title: Text(

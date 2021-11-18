@@ -17,7 +17,6 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:mocktail/mocktail.dart';
 
 import '../../mock_data/coins_mock_data.dart';
-import '../../mock_data/route_mock.dart';
 
 class MockCoinBloc extends MockBloc<CoinsEvent, CoinsState>
     implements CoinsBloc {}
@@ -27,6 +26,8 @@ class MockCoinService extends Mock implements CoinService {}
 class FakeCoinState extends Fake implements CoinsState {}
 
 class FakeCoinEvent extends Fake implements CoinsEvent {}
+
+class RouteFake extends Fake implements Route {}
 
 class MockNavigatorObserver extends Mock implements NavigatorObserver {}
 
@@ -216,5 +217,20 @@ main() {
       await tester.pumpAndSettle();
       verify(() => mockObserver.didPush(any(), any())).called(10);
     });
+
+    testWidgets('Should unfocus search text field when tap search text field while bloc state is [CoinsLoadSuccess]',
+            (tester) async {
+          when(() => coinsBloc.state).thenReturn(CoinsLoadSuccess(
+            listCoins:
+            List<Coins>.from(mockResponse.map((model) => Coins.fromJson(model)))
+                .toList(),
+          ));
+          await tester.pumpWidget(widget);
+          await tester.pumpAndSettle();
+          await tester.tap(find.byType(SearchBar));
+          await tester.enterText(find.byType(SearchBar), 'bit');
+          await tester.pump(const Duration(seconds: 1));
+          await tester.tap(find.byType(SearchBar));
+        });
   });
 }

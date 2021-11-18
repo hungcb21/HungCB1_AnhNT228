@@ -32,26 +32,17 @@ void main() {
     expect: () => [CoinsLoadInProgress(), CoinsLoadSuccess()],
   );
 
-  blocTest(
-    'emits [CoinsLoadInProgress] then [CoinsLoadFailure] when [GetListCoins] is called',
-    build: () {
-      coinsService = MockCoinService();
-      return CoinsBloc(service: coinsService);
-    },
-    act: (CoinsBloc bloc) => bloc.add(CoinListRequested()),
-    expect: () => [CoinsLoadInProgress(), CoinsLoadFailure(error: error)],
-  );
 
   blocTest(
     'emits [CoinsLoadFailure] when [GetListCoins] is called and service throws error.',
     build: () {
       coinsService = MockCoinService();
       when(coinsService.getCoinsFromAPI(
-              currency: '', start: 1, limit: 2, sparkline: true))
+              currency: 'usd', start: 1, limit: 100, sparkline: true))
           .thenThrow(Exception());
       return CoinsBloc(service: coinsService);
     },
-    act: (CoinsBloc bloc) => bloc.add(CoinListRequested()),
-    expect: () => [CoinsLoadInProgress(), CoinsLoadFailure(error: error)],
+    act: (CoinsBloc bloc) => bloc.add(CoinListRequested(currency: 'usd',sparkLine: true)),
+    expect: () => [CoinsLoadInProgress(), CoinsLoadFailure(error: Exception().toString())],
   );
 }

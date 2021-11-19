@@ -76,18 +76,20 @@ class _HomeScreenState extends State<HomeScreen> {
                       child: BlocBuilder<CoinsBloc, CoinsState>(
                         builder: (BuildContext context, state) {
                           if (state is CoinsLoadSuccess) {
-                            return RefreshIndicator(
-                              onRefresh: () async {
-                                context.read<CoinsBloc>().add(CoinListRequested(
-                                    currency: StringData.USD, sparkLine: true));
-                              },
-                              child: ListView.builder(
-                                itemCount: state.listCoins!.length,
-                                itemBuilder: (BuildContext context, int index) {
-                                  if (state.listCoins == null) {
-                                    return Center(
-                                        child: Text(StringData.emptyList));
-                                  } else {
+                            if (state.listCoins == null) {
+                              return Center(child: Text(StringData.emptyList));
+                            } else {
+                              return RefreshIndicator(
+                                onRefresh: () async {
+                                  context.read<CoinsBloc>().add(
+                                      CoinListRequested(
+                                          currency: StringData.USD,
+                                          sparkLine: true));
+                                },
+                                child: ListView.builder(
+                                  itemCount: state.listCoins!.length,
+                                  itemBuilder:
+                                      (BuildContext context, int index) {
                                     return Padding(
                                       padding: coinCardPadding,
                                       child: CoinCard(
@@ -108,10 +110,10 @@ class _HomeScreenState extends State<HomeScreen> {
                                         },
                                       ),
                                     );
-                                  }
-                                },
-                              ),
-                            );
+                                  },
+                                ),
+                              );
+                            }
                           }
                           if (state is CoinsLoadInProgress) {
                             return Center(

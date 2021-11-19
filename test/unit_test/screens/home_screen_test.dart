@@ -218,19 +218,20 @@ main() {
       verify(() => mockObserver.didPush(any(), any())).called(10);
     });
 
-    testWidgets('Should unfocus search text field when tap search text field while bloc state is [CoinsLoadSuccess]',
-            (tester) async {
-          when(() => coinsBloc.state).thenReturn(CoinsLoadSuccess(
-            listCoins:
+    testWidgets(
+        'Should unfocus search text field when tap search text field while bloc state is [CoinsLoadSuccess]',
+        (tester) async {
+      when(() => coinsBloc.state).thenReturn(CoinsLoadSuccess(
+        listCoins:
             List<Coins>.from(mockResponse.map((model) => Coins.fromJson(model)))
                 .toList(),
-          ));
-          await tester.pumpWidget(widget);
-          await tester.pumpAndSettle();
-          await tester.tap(find.byType(SearchBar));
-          await tester.enterText(find.byType(SearchBar), 'bit');
-          await tester.pump(const Duration(seconds: 1));
-          await tester.tap(find.byType(SearchBar));
-        });
+      ));
+      await tester.pumpWidget(widget);
+      await tester.pumpAndSettle();
+      await tester.tap(find.byType(SearchBar));
+      await tester.enterText(find.byType(SearchBar), 'bit');
+      await tester.pump(const Duration(seconds: 1));
+      await tester.tap(find.byType(SearchBar));
+    });
   });
 }

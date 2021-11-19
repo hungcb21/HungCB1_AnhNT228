@@ -28,11 +28,7 @@ packages:
       name: async
       url: "https://pub.dartlang.org"
     source: hosted
-<<<<<<< HEAD
-    version: "2.6.1"
-=======
     version: "2.8.1"
->>>>>>> 7ebbf69aa5fbef2088de1c44b24c826c26eb8f7d
   bloc:
     dependency: transitive
     description:

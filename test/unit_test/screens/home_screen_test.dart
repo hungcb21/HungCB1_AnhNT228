@@ -186,6 +186,7 @@ main() {
       await tester.pumpAndSettle();
       expect(find.byType(SearchBar), findsOneWidget);
     });
+
     testWidgets('Should render Coin list when bloc state is [CoinsLoadSuccess]',
         (tester) async {
       when(() => coinsBloc.state).thenReturn(CoinsLoadSuccess(

@@ -187,18 +187,6 @@ main() {
       expect(find.byType(SearchBar), findsOneWidget);
     });
 
-    testWidgets('Should render Coin list when bloc state is [CoinsLoadSuccess]',
-        (tester) async {
-      when(() => coinsBloc.state).thenReturn(CoinsLoadSuccess(
-        listCoins:
-            List<Coins>.from(mockResponse.map((model) => Coins.fromJson(model)))
-                .toList(),
-      ));
-      await tester.pumpWidget(widget);
-      await tester.pumpAndSettle();
-      expect(find.text(listName), findsOneWidget);
-    });
-
     testWidgets('Should search Coin when bloc state is [CoinsLoadSuccess]',
         (tester) async {
       when(() => coinsBloc.state).thenReturn(CoinsLoadSuccess(

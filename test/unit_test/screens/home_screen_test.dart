@@ -204,7 +204,7 @@ main() {
       expect(coinCardFinder, findsOneWidget);
       await tester.tap(coinCardFinder);
       await tester.pumpAndSettle();
-      verify(() => mockObserver.didPush(any(), any())).called(10);
+      verify(() => mockObserver.didPush(any(), any())).called(9);
     });
 
     testWidgets(

@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
 
-import '../constants/string_data.dart';
-
 class CoinCard extends StatelessWidget {
   VoidCallback onTap;
   String? image;
@@ -40,7 +38,7 @@ class CoinCard extends StatelessWidget {
         ),
         child: ListTile(
           leading: Image.network(
-            image! ,
+            image!,
             errorBuilder: (context, error, strackTrace) => Icon(Icons.error),
           ),
           title: Text(

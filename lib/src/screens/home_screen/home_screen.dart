@@ -45,8 +45,7 @@ class _HomeScreenState extends State<HomeScreen> {
               padding: searchBarPadding,
               child: Column(
                 children: [
-                  BlocBuilder<CoinsBloc, CoinsState>(
-                      builder: (context, state) {
+                  BlocBuilder<CoinsBloc, CoinsState>(builder: (context, state) {
                     if (state is CoinsLoadSuccess) {
                       return SearchBar(state.listCoins!);
                     }
@@ -79,32 +78,28 @@ class _HomeScreenState extends State<HomeScreen> {
                           if (state is CoinsLoadSuccess) {
                             return RefreshIndicator(
                               onRefresh: () async {
-                                context.read<CoinsBloc>().add(
-                                    CoinListRequested(
-                                        currency: StringData.USD,
-                                        sparkLine: true));
+                                context.read<CoinsBloc>().add(CoinListRequested(
+                                    currency: StringData.USD, sparkLine: true));
                               },
                               child: ListView.builder(
                                 itemCount: state.listCoins!.length,
-                                itemBuilder:
-                                    (BuildContext context, int index) {
+                                itemBuilder: (BuildContext context, int index) {
                                   return Padding(
                                     padding: coinCardPadding,
                                     child: CoinCard(
                                       image: state.listCoins![index].image,
                                       name: state.listCoins![index].name,
                                       symbol: state.listCoins![index].symbol,
-                                      price: state.listCoins![index]
-                                              .currentPrice ??
+                                      price: state
+                                              .listCoins![index].currentPrice ??
                                           0,
                                       priceChange: state.listCoins![index]
                                               .priceChange_24h ??
                                           0,
                                       onTap: () => {
-                                        Navigator.pushNamed(context,
-                                            RouteConstant.detailRoute,
-                                            arguments:
-                                                state.listCoins![index])
+                                        Navigator.pushNamed(
+                                            context, RouteConstant.detailRoute,
+                                            arguments: state.listCoins![index])
                                       },
                                     ),
                                   );
@@ -127,8 +122,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                         .textTheme
                                         .headline5!
                                         .copyWith(
-                                            fontWeight:
-                                                AppFontWeight.extraBold,
+                                            fontWeight: AppFontWeight.extraBold,
                                             color: Colors.red)),
                                 FloatingActionButton(
                                   onPressed: () async {

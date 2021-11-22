@@ -1,5 +1,5 @@
 import 'dart:convert';
-
+import 'package:flutter/material.dart';
 import 'package:bloc_test/bloc_test.dart';
 import 'package:crypto_mobile_application/src/blocs/coins_bloc/coins_bloc.dart';
 import 'package:crypto_mobile_application/src/blocs/coins_bloc/coins_event.dart';
@@ -11,23 +11,18 @@ import 'package:crypto_mobile_application/src/screens/home_screen/home_screen.da
 import 'package:crypto_mobile_application/src/services/coin_service.dart';
 import 'package:crypto_mobile_application/src/widgets/coin_card.dart';
 import 'package:crypto_mobile_application/src/widgets/search_bar.dart';
-import 'package:flutter/material.dart';
+
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mocktail/mocktail.dart';
 
+import '../../mock_data/coin_bloc_fake.dart';
 import '../../mock_data/coins_mock_data.dart';
 
 class MockCoinBloc extends MockBloc<CoinsEvent, CoinsState>
     implements CoinsBloc {}
 
 class MockCoinService extends Mock implements CoinService {}
-
-class FakeCoinState extends Fake implements CoinsState {}
-
-class FakeCoinEvent extends Fake implements CoinsEvent {}
-
-class RouteFake extends Fake implements Route {}
 
 class MockNavigatorObserver extends Mock implements NavigatorObserver {}
 
@@ -39,7 +34,6 @@ class CustomBindings extends AutomatedTestWidgetsFlutterBinding {
 main() {
   CustomBindings();
   String emptyList = 'Coin list is empty';
-  final listName = 'Coins';
   final mockResponse = json.decode(mockCoinsData);
   final mockObserver = MockNavigatorObserver();
 

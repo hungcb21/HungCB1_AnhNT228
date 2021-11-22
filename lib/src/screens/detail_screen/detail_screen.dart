@@ -71,6 +71,7 @@ class _DetailScreenState extends State<DetailScreen> {
                     children: [
                       Container(
                         height: heightOfChartCoin,
+
                       ),
                     ],
                   ),

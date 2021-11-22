@@ -19,8 +19,7 @@ import 'package:mocktail/mocktail.dart';
 import '../../mock_data/coin_bloc_fake.dart';
 import '../../mock_data/coins_mock_data.dart';
 
-class MockCoinBloc extends MockBloc<CoinsEvent, CoinsState>
-    implements CoinsBloc {}
+
 
 class MockCoinService extends Mock implements CoinService {}
 

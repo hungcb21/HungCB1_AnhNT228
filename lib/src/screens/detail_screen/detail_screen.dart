@@ -16,12 +16,8 @@ class DetailScreen extends StatefulWidget {
 
 class _DetailScreenState extends State<DetailScreen> {
   Coins get _coins => widget.coins;
-  double _heightOfTopContainer = 100;
-  double _heightOfBetweenContainer = 250;
+  double _heightOfTopContainer = 400;
   double _heightOfBottomContainer = 300;
-  double _sizeOfCoinImage = 60;
-  final _coinInfoPadding = EdgeInsets.symmetric(horizontal: 38);
-  final _coinPropsPadding = EdgeInsets.only(left: 80);
   final _chartCoinPadding = EdgeInsets.fromLTRB(20, 40, 20, 10);
   final _chartCoinBorderRadius = BorderRadius.only(
     topRight: Radius.circular(40),
@@ -41,32 +37,46 @@ class _DetailScreenState extends State<DetailScreen> {
         backgroundColor: Colors.transparent,
         centerTitle: true,
       ),
-      body: SingleChildScrollView(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: [
-            Container(
-              height: _heightOfTopContainer,
-            ),
-            Container(
-              padding: _chartCoinPadding,
-              height: _heightOfBottomContainer,
-              decoration: BoxDecoration(
-                  color: ColorsApp.backgroundBottomColor,
-                  borderRadius: _chartCoinBorderRadius),
+      body: LayoutBuilder(
+          builder:
+              (BuildContext context, BoxConstraints viewportConstraints) {
+          return SingleChildScrollView(
+            child: ConstrainedBox(
+              constraints: BoxConstraints(
+                minHeight: viewportConstraints.maxHeight,
+              ),
               child: Column(
-                mainAxisAlignment: MainAxisAlignment.spaceAround,
-                crossAxisAlignment: CrossAxisAlignment.stretch,
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [],
+                  Container(
+                    height: _heightOfTopContainer,
+                    child: Column(
+                      children: [
+                      ],
+                    ),
+                  ),
+                  Container(
+                    padding: _chartCoinPadding,
+                    height: _heightOfBottomContainer,
+                    decoration: BoxDecoration(
+                        color: ColorsApp.backgroundBottomColor,
+                        borderRadius: _chartCoinBorderRadius),
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.spaceAround,
+                      crossAxisAlignment: CrossAxisAlignment.stretch,
+                      children: [
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [],
+                        )
+                      ],
+                    ),
                   )
                 ],
               ),
-            )
-          ],
-        ),
+            ),
+          );
+        }
       ),
     );
   }

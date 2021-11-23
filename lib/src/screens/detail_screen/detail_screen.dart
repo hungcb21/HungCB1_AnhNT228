@@ -2,6 +2,10 @@ import 'package:crypto_mobile_application/src/constants/string_data.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
+import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
+
+import '../../constants/app_theme.dart';
 import '../../constants/colors.dart';
 import '../../models/coins.dart';
 
@@ -19,10 +23,9 @@ class _DetailScreenState extends State<DetailScreen> {
   double _heightOfTopContainer = 400;
   double _heightOfBottomContainer = 300;
   final _chartCoinPadding = EdgeInsets.fromLTRB(20, 40, 20, 10);
-  final _chartCoinBorderRadius = BorderRadius.only(
-    topRight: Radius.circular(40),
-    topLeft: Radius.circular(40),
-  );
+  double _heightOfTopContainer = 150;
+  double _heightOfChartCoin = 200;
+  final _chartCoinPadding = EdgeInsets.fromLTRB(20, 40, 20, 0);
 
   @override
   Widget build(BuildContext context) {

@@ -13,4 +13,5 @@ class StringData {
   static const String atlChange = 'ATL change: ';
   static const String marketCap = 'Market Cap: ';
   static const String marketCapChange = 'Market Cap change: ';
+
 }

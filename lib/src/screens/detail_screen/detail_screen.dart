@@ -1,11 +1,11 @@
+import 'dart:ui';
+
 import 'package:crypto_mobile_application/src/constants/string_data.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
-import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
+import 'package:syncfusion_flutter_charts/sparkcharts.dart';
 
-import '../../constants/app_theme.dart';
 import '../../constants/colors.dart';
 import '../../models/coins.dart';
 
@@ -20,7 +20,8 @@ class DetailScreen extends StatefulWidget {
 
 class _DetailScreenState extends State<DetailScreen> {
   Coins get _coins => widget.coins;
-  double _heightOfTopContainer = 300;
+  double borderWidthOfChart = 2;
+  double _heightOfTopContainer = 400;
   double _heightOfBottomContainer = 300;
   final _coinPropsPadding = EdgeInsets.only(left: 80);
   double _sizeOfCoinImage = 60;
@@ -33,6 +34,15 @@ class _DetailScreenState extends State<DetailScreen> {
 
   @override
   Widget build(BuildContext context) {
+    TextStyle _currencyPerCoin = Theme.of(context)
+        .textTheme
+        .headline6!
+        .copyWith(color: Colors.grey, fontSize: 15);
+    TextStyle _lastPriceOfChart =
+        Theme.of(context).textTheme.headline6!.copyWith(fontSize: 15);
+    TextStyle _labelOfChart = Theme.of(context).textTheme.headline6!.copyWith(
+          color: Colors.orange,
+        );
     TextStyle _coinInfo =
         Theme.of(context).textTheme.headline6!.copyWith(color: Colors.white);
     TextStyle _coinData =
@@ -212,8 +222,29 @@ class _DetailScreenState extends State<DetailScreen> {
                     children: [
                       Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [],
-                      )
+                        children: [
+                          Text(
+                              '${_coins.symbol.toUpperCase()}/${StringData.USD}',
+                              style: _currencyPerCoin),
+                          Text(
+                            '${_coins.sparklineIn_7d.last.toStringAsFixed(3)}',
+                            style: _lastPriceOfChart,
+                          )
+                        ],
+                      ),
+                      Flexible(
+                        child: SfSparkAreaChart(
+                          borderWidth: borderWidthOfChart,
+                          color: ColorsApp.chartColor,
+                          borderColor: Colors.orange,
+                          trackball: SparkChartTrackball(
+                            borderColor: Colors.white,
+                            backgroundColor: Colors.white,
+                            labelStyle: _labelOfChart,
+                          ),
+                          data: _coins.sparklineIn_7d.cast<double>(),
+                        ),
+                      ),
                     ],
                   ),
                 )

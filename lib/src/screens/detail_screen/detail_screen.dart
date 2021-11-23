@@ -16,10 +16,10 @@ class DetailScreen extends StatefulWidget {
 
 class _DetailScreenState extends State<DetailScreen> {
   Coins get _coins => widget.coins;
-  double heightOfTopContainer = 150;
-  double heightOfChartCoin = 200;
-  final chartCoinPadding = EdgeInsets.fromLTRB(20, 40, 20, 0);
-  final chartCoinBorderRadius = BorderRadius.only(
+  double _heightOfTopContainer = 150;
+  double _heightOfChartCoin = 200;
+  final _chartCoinPadding = EdgeInsets.fromLTRB(20, 40, 20, 0);
+  final _chartCoinBorderRadius = BorderRadius.only(
     topRight: Radius.circular(40),
     topLeft: Radius.circular(40),
   );
@@ -57,21 +57,20 @@ class _DetailScreenState extends State<DetailScreen> {
         body: Column(
           children: [
             Container(
-              height: heightOfTopContainer,
+              height: _heightOfTopContainer,
             ),
             Expanded(
               child: Container(
                 width: double.infinity,
-                padding: chartCoinPadding,
+                padding: _chartCoinPadding,
                 decoration: BoxDecoration(
                     color: ColorsApp.backgroundBottomColor,
-                    borderRadius: chartCoinBorderRadius),
+                    borderRadius: _chartCoinBorderRadius),
                 child: SingleChildScrollView(
                   child: Column(
                     children: [
                       Container(
-                        height: heightOfChartCoin,
-
+                        height: _heightOfChartCoin,
                       ),
                     ],
                   ),

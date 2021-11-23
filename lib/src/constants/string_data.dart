@@ -1,6 +1,6 @@
 class StringData {
   static const String listCoinsTitle = 'Coins';
-  static const String USD = 'usd';
+  static const String USD = 'USD';
   static const String emptyList = 'Coin list is empty';
   static const String hintTextSearch = 'Search';
   static const String errorListMessage = 'Failed to load coin list';

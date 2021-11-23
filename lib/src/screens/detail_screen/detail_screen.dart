@@ -1,12 +1,11 @@
 import 'dart:ui';
 
-import 'package:crypto_mobile_application/src/constants/string_data.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-
 import 'package:syncfusion_flutter_charts/sparkcharts.dart';
 
 import '../../constants/colors.dart';
+import '../../constants/string_data.dart';
 import '../../models/coins.dart';
 
 class DetailScreen extends StatefulWidget {
@@ -20,7 +19,7 @@ class DetailScreen extends StatefulWidget {
 
 class _DetailScreenState extends State<DetailScreen> {
   Coins get _coins => widget.coins;
-  double borderWidthOfChart = 2;
+  double _borderWidthOfChart = 2;
   double _heightOfTopContainer = 400;
   double _heightOfBottomContainer = 300;
   final _coinPropsPadding = EdgeInsets.only(left: 80);
@@ -234,7 +233,7 @@ class _DetailScreenState extends State<DetailScreen> {
                       ),
                       Flexible(
                         child: SfSparkAreaChart(
-                          borderWidth: borderWidthOfChart,
+                          borderWidth: _borderWidthOfChart,
                           color: ColorsApp.chartColor,
                           borderColor: Colors.orange,
                           trackball: SparkChartTrackball(

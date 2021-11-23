@@ -9,6 +9,8 @@ class Coins {
   num? priceChange_24h;
   num? ath;
   num? athChangePercentage;
+  num? marketCap_24h;
+  num? marketCapChangePercentage_24h;
   String athDate;
   num? atl;
   num? atlChangePercentage;
@@ -33,27 +35,31 @@ class Coins {
     required this.atlDate,
     required this.lastUpdated,
     required this.sparklineIn_7d,
+    required this.marketCap_24h,
+    required this.marketCapChangePercentage_24h,
   });
 
   factory Coins.fromJson(Map<String, dynamic> json) {
     return Coins(
-      id: json["id"],
-      name: json["name"],
-      symbol: json['symbol'],
-      image: json['image'],
-      ath: json['ath'],
-      athChangePercentage: json['ath_change_percentage'],
-      athDate: json['ath_date'],
-      atl: json['atl'],
-      atlChangePercentage: json['atl_change_percentage'],
-      atlDate: json['atl_date'],
-      currentPrice: json['current_price'],
-      high_24h: json['high_24h'],
-      lastUpdated: json['last_updated'],
-      low_24h: json['low_24h'],
-      priceChange_24h: json['price_change_24h'],
-      sparklineIn_7d: json['sparkline_in_7d']['price'],
-    );
+        id: json["id"],
+        name: json["name"],
+        symbol: json['symbol'],
+        image: json['image'],
+        ath: json['ath'],
+        athChangePercentage: json['ath_change_percentage'],
+        athDate: json['ath_date'],
+        atl: json['atl'],
+        atlChangePercentage: json['atl_change_percentage'],
+        atlDate: json['atl_date'],
+        currentPrice: json['current_price'],
+        high_24h: json['high_24h'],
+        lastUpdated: json['last_updated'],
+        low_24h: json['low_24h'],
+        priceChange_24h: json['price_change_24h'],
+        sparklineIn_7d: json['sparkline_in_7d']['price'],
+        marketCap_24h: json['market_cap_change_24h'],
+        marketCapChangePercentage_24h:
+            json['market_cap_change_percentage_24h']);
   }
 
   Map<String, dynamic> toJson() {
@@ -74,6 +80,8 @@ class Coins {
       'atl_date': atlDate,
       'last_updated': lastUpdated,
       'sparkline_in_7d' 'price': sparklineIn_7d,
+      'market_cap_change_24h': marketCap_24h,
+      'market_cap_change_percentage_24h': marketCapChangePercentage_24h,
     };
   }
 }

@@ -1,12 +1,8 @@
-import 'package:crypto_mobile_application/src/constants/string_data.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
-import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
-
-import '../../constants/app_theme.dart';
 import '../../constants/colors.dart';
+import '../../constants/string_data.dart';
 import '../../models/coins.dart';
 
 class DetailScreen extends StatefulWidget {

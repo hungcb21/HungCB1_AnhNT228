@@ -22,8 +22,8 @@ class _DetailScreenState extends State<DetailScreen> {
   Coins get _coins => widget.coins;
   double _heightOfTopContainer = 300;
   double _heightOfBottomContainer = 300;
-  final _coinPropsPadding = EdgeInsets.only(left: 80);
   double _sizeOfCoinImage = 60;
+  final _coinPropsPadding = EdgeInsets.only(left: 80);
   final _coinInfoPadding = EdgeInsets.symmetric(horizontal: 38);
   final _chartCoinPadding = EdgeInsets.fromLTRB(20, 40, 20, 10);
   final _chartCoinBorderRadius = BorderRadius.only(

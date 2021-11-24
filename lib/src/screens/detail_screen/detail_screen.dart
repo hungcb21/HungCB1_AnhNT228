@@ -103,7 +103,8 @@ class _DetailScreenState extends State<DetailScreen> {
                             Row(
                               mainAxisAlignment: MainAxisAlignment.start,
                               children: [
-                                Text(StringData.highIn24h, style: _coinInfo),
+                                Text(StringData.highPriceIn24h,
+                                    style: _coinInfo),
                                 Text(
                                     '${double.parse(_coins.high_24h.toString()).toStringAsFixed(2)}',
                                     style: _coinData),
@@ -112,7 +113,8 @@ class _DetailScreenState extends State<DetailScreen> {
                             Row(
                               mainAxisAlignment: MainAxisAlignment.start,
                               children: [
-                                Text(StringData.lowIn24h, style: _coinInfo),
+                                Text(StringData.lowPriceIn24h,
+                                    style: _coinInfo),
                                 Text(
                                     '${double.parse(_coins.low_24h.toString()).toStringAsFixed(2)}',
                                     style: _coinData),

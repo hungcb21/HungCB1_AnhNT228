@@ -20,7 +20,7 @@ class _DetailScreenState extends State<DetailScreen> {
   double _heightOfBottomContainer = 300;
   double _sizeOfCoinImage = 60;
   final _coinPropsPadding = EdgeInsets.only(left: 80);
-  final _coinInfoPadding = EdgeInsets.symmetric(horizontal: 38);
+  final _imageCoinPadding = EdgeInsets.symmetric(horizontal: 38);
   final _chartCoinPadding = EdgeInsets.fromLTRB(20, 40, 20, 10);
   final _chartCoinBorderRadius = BorderRadius.only(
     topRight: Radius.circular(40),
@@ -69,7 +69,7 @@ class _DetailScreenState extends State<DetailScreen> {
                         children: [
                           Container(
                             height: _sizeOfCoinImage,
-                            padding: _coinInfoPadding,
+                            padding: _imageCoinPadding,
                             child: Image.network(
                               widget.coins.image,
                               errorBuilder: (context, error, strackTrace) =>

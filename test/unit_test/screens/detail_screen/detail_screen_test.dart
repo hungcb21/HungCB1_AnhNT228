@@ -76,11 +76,11 @@ main() {
         (tester) async {
       await tester.pumpWidget(widget);
       await tester.pumpAndSettle();
-      final hightPriceDesc = find.text(highPrice);
+      final highPriceDesc = find.text(highPrice);
       final highPriceData = find.text(
           '${double.parse(_coins.high_24h.toString()).toStringAsFixed(2)}');
       expect(highPriceData, findsOneWidget);
-      expect(hightPriceDesc, findsOneWidget);
+      expect(highPriceDesc, findsOneWidget);
     });
     testWidgets('Should render low price in 24h when DetailScreen displayed',
         (tester) async {

@@ -1,3 +1,4 @@
+import 'package:syncfusion_flutter_charts/sparkcharts.dart';
 import 'package:crypto_mobile_application/src/constants/routes.dart';
 import 'package:crypto_mobile_application/src/models/coins.dart';
 import 'package:crypto_mobile_application/src/routes/app_route.dart';
@@ -5,7 +6,6 @@ import 'package:crypto_mobile_application/src/screens/detail_screen/detail_scree
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mockito/mockito.dart';
-import 'package:syncfusion_flutter_charts/sparkcharts.dart';
 
 class MockNavigatorObserver extends Mock implements NavigatorObserver {}
 

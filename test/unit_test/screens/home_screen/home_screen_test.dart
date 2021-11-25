@@ -1,6 +1,5 @@
 import 'dart:convert';
 import 'package:flutter/material.dart';
-import 'package:bloc_test/bloc_test.dart';
 import 'package:crypto_mobile_application/src/blocs/coins_bloc/coins_bloc.dart';
 import 'package:crypto_mobile_application/src/blocs/coins_bloc/coins_event.dart';
 import 'package:crypto_mobile_application/src/blocs/coins_bloc/coins_state.dart';
@@ -16,10 +15,8 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mocktail/mocktail.dart';
 
-import '../../mock_data/coin_bloc_fake.dart';
-import '../../mock_data/coins_mock_data.dart';
-
-
+import '../../../mock_data/coin_bloc_fake.dart';
+import '../../../mock_data/coins_mock_data.dart';
 
 class MockCoinService extends Mock implements CoinService {}
 

@@ -1,18 +1,18 @@
+import 'package:flutter/material.dart';
+import 'package:flutter_test/flutter_test.dart';
+import 'package:mockito/mockito.dart';
 import 'package:syncfusion_flutter_charts/sparkcharts.dart';
 import 'package:crypto_mobile_application/src/constants/routes.dart';
 import 'package:crypto_mobile_application/src/models/coins.dart';
 import 'package:crypto_mobile_application/src/routes/app_route.dart';
 import 'package:crypto_mobile_application/src/screens/detail_screen/detail_screen.dart';
-import 'package:flutter/material.dart';
-import 'package:flutter_test/flutter_test.dart';
-import 'package:mockito/mockito.dart';
 
 class MockNavigatorObserver extends Mock implements NavigatorObserver {}
 
 main() {
   final mockObserver = MockNavigatorObserver();
   final String _currency = 'USD';
-  final String hightPrice = 'High price in 24h: ';
+  final String highPrice = 'High price in 24h: ';
   final String lowPriceIn24h = 'Low price in 24h: ';
   final String ath = 'ATH: ';
   final String athChange = 'ATH change: ';
@@ -76,7 +76,7 @@ main() {
         (tester) async {
       await tester.pumpWidget(widget);
       await tester.pumpAndSettle();
-      final hightPriceDesc = find.text(hightPrice);
+      final hightPriceDesc = find.text(highPrice);
       final highPriceData = find.text(
           '${double.parse(_coins.high_24h.toString()).toStringAsFixed(2)}');
       expect(highPriceData, findsOneWidget);
